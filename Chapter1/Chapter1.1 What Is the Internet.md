@@ -1,6 +1,6 @@
 
 ## 1.1.1 A Nuts and Bolts Description
-<img src="Images/Pasted image 20240924130428.png">
+![[Images/Pasted image 20240924130428.png]]
 
 ### Internet
 - Network of Networks
@@ -40,7 +40,7 @@
 
 >[!info] 네트워크 구성
 >네트워크는 크게 **Network Edge, Access Netowrk, Network Core**의 3단계로 구성되어 있음<br>
-><img src="Images/Pasted image 20240924141114.png"><br>
+>![[Images/Pasted image 20240924141114.png]]
 >**Netowrk Edge**
 >- 네트워크의 가장자리. 수많은 End System이 속해있음
 >- 네트워크 말단의 여러 hosts들의 집합
@@ -85,7 +85,7 @@
 
 
 ## 1.1.3 What Is a Protocol?
-<img src="Images/Pasted image 20240924143810.png">
+![[Images/Pasted image 20240924143810.png]]
 1. *Your computer will send a connection request message to the Web server and wait for a reply.*
 2. *The Web server will eventually receive your connection request message and return a connection reply message.*
 3. *Your computer then sends the name of the Web page it wants to fetch from that Web server in a GET message.*

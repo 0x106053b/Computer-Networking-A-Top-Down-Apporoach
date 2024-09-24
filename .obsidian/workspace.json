@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Chapter1/Chapter1.1 What Is the Internet.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Chapter1/Chapter1.1 What Is the Internet.md",
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Chapter1/Chapter1.1 What Is the Internet.md",
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Chapter1/Chapter1.1 What Is the Internet.md"
+                "file": "README.md"
               }
             }
           }
@@ -148,8 +148,8 @@
   },
   "active": "8df0335db7299fae",
   "lastOpenFiles": [
-    "Chapter1/Images/Pasted image 20240924143810.png",
     "Chapter1/Chapter1.1 What Is the Internet.md",
+    "Chapter1/Images/Pasted image 20240924143810.png",
     "wq",
     "Chapter1/Chapter1 Introduction.md",
     "Chapter1/Images",
