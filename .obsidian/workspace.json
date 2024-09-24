@@ -13,13 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "Chapter1/Chapter1.1 What Is the Internet.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "5ba7116eacf6aace",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Chapter1/Chapter1.2 The Network Edge.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -69,7 +82,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "ae0072a41a242c4a",
@@ -85,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "Chapter1/Chapter1.2 The Network Edge.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "Chapter1/Chapter1.2 The Network Edge.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md"
+                "file": "Chapter1/Chapter1.2 The Network Edge.md"
               }
             }
           }
@@ -146,16 +159,24 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "8df0335db7299fae",
+  "active": "5ba7116eacf6aace",
   "lastOpenFiles": [
+    "Pasted image 20240924155950.png",
+    "Pasted image 20240924155943.png",
     "Chapter1/Chapter1.1 What Is the Internet.md",
-    "Chapter1/Images/Pasted image 20240924143810.png",
-    "wq",
+    "Chapter1/Chapter1.2 The Network Edge.md",
+    "Chapter1/Images/Pasted image 20240924152003.png",
+    "Chapter1/Images/Pasted image 20240924152628.png",
+    "Pasted image 20240924151934.png",
+    "Pasted image 20240924151912.png",
+    "Pasted image 20240924151908.png",
     "Chapter1/Chapter1 Introduction.md",
-    "Chapter1/Images",
-    "Chapter1/Images/Pasted image 20240924141114.png",
     "Chapter1/Images/Pasted image 20240924130428.png",
     "README.md",
+    "Chapter1/Images/Pasted image 20240924143810.png",
+    "wq",
+    "Chapter1/Images",
+    "Chapter1/Images/Pasted image 20240924141114.png",
     "Chapter2",
     "Chapter1",
     "Welcome.md"
