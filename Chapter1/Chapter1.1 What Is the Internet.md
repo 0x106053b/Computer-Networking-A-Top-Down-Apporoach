@@ -1,6 +1,5 @@
 
 ## 1.1.1 A Nuts and Bolts Description
-
 ![[Images/Pasted image 20240924130428.png]]
 ### Internet
 - Network of Networks
