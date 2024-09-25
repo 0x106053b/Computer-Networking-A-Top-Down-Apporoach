@@ -4,23 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "d1f445149efd8e78",
+        "id": "a4f597cbabc4939a",
         "type": "tabs",
         "children": [
           {
-            "id": "8df0335db7299fae",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Chapter1/Chapter1.1 What Is the Internet.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "5ba7116eacf6aace",
+            "id": "020fec77fb01e1e3",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -31,8 +19,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -159,24 +146,25 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "5ba7116eacf6aace",
+  "active": "020fec77fb01e1e3",
   "lastOpenFiles": [
-    "Pasted image 20240924155950.png",
-    "Pasted image 20240924155943.png",
     "Chapter1/Chapter1.1 What Is the Internet.md",
+    "Chapter1/Images/Pasted image 20240924155943.png",
     "Chapter1/Chapter1.2 The Network Edge.md",
+    "Chapter1.3 The Network Core.md",
+    "Chapter1/Chapter1 Introduction.md",
+    "Chapter1/Images/Pasted image 20240925215902.png",
+    "Chapter1/Images/Pasted image 20240925214646.png",
+    "Chapter1/Images/Pasted image 20240925212657.png",
+    "Chapter1/Images/Pasted image 20240924155950.png",
     "Chapter1/Images/Pasted image 20240924152003.png",
     "Chapter1/Images/Pasted image 20240924152628.png",
     "Pasted image 20240924151934.png",
     "Pasted image 20240924151912.png",
     "Pasted image 20240924151908.png",
-    "Chapter1/Chapter1 Introduction.md",
-    "Chapter1/Images/Pasted image 20240924130428.png",
     "README.md",
-    "Chapter1/Images/Pasted image 20240924143810.png",
     "wq",
     "Chapter1/Images",
-    "Chapter1/Images/Pasted image 20240924141114.png",
     "Chapter2",
     "Chapter1",
     "Welcome.md"

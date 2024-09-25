@@ -71,6 +71,9 @@
 	- ❓ **==IP : Router와 End Systems 사이에서 송수신되는 packet의 formats을 기술==한 프로토콜**
 
 
+<hr>
+
+
 ## 1.1.2 A Services Description
 ### Internet, an Infrastructure that Provides Services to Applications
 - 인터넷 애플리케이션은 애플리케이션 서로가 정보를 교환하도록 하는 여러 system을 포함하고 있으므로, Distributed Applications 라고 불리기도 함. 
