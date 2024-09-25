@@ -27,6 +27,7 @@ end system들은 다양한 애플리케이션들을 '호스팅' 할 수 있기 �
 - 각 가정으로부터 수신된 analog signal은 CO의 DSLAM을 통해 digital format으로 변환됨
 - **==각 가정의 전화 회선은 통신 데이터와 전화 신호를 동시에 전달하므로, 이 두 신호는 다른 주파수로 변환됨==**
 	- 💡 이후 DSLAM에서 통신 데이터와 전화회선을 분리하여 각각을 Internet과 Telephone Network로 전달하기 위함! **==(=주파수 분할 다중화, FDM)==**
+
 - 반대로, 가정에서는 splitter가 수신된 신호를 통신 데이터와 전화 신호로 분리함. 이후 분리된 통신 데이터는 DSL modem을 지나며 digital format으로 변환됨
 
 >[!info] DSL modem and DSLAM
@@ -34,16 +35,19 @@ end system들은 다양한 애플리케이션들을 '호스팅' 할 수 있기 �
 
 - DSL표준은 다양한 transmission rate를 정의하고 있는데, downstream rate와 upstream rate가 서로 다름 (asymmetric)
 	- 💡 downstream rate > upstream rate
+
 - transmission rate는 표준에 정의된 것보다 낮을 수 있는데, 그 이유는 아래와 같음
 	- DSL Provider가 인터넷 서비스 계약의 레벨에 따라 다른 limit을 둔 경우
 	- 가정과의 CO의 물리적 거리 (DSL은 단거리 통신을 목적으로 디자인되었음)
 	- twisted-pair line의 표준과, 전기 출력의 세기에 따라 달라질 수 있음
+
 - copper wire가 physical link 설계에 사용됨
 
 ### Home Access : Cable (HFC, Hybrid Fiber Coax)
 ![](Pasted%20image%2020240925233407.png)
 - DSL이 기존의 전화 회선을 이용해 인터넷 통신을 제공한 것처럼, cable Internet access는 케이블 TV회사의 인프라스트럭쳐를 활용하는 방식
 	-  즉, Cable 인터넷의 사용자라면 그 사용자의 Cable TV 회사 역시 인터넷 회사와 동일한 회사겠구나!
+
 - 광케이블(Fiber cable)이 neighborhood-level junctions들을 연결하고, 그렇게 연결된 junction 내부의 각 가정들은 동축케이블(Coaxial cable)을 통해 연결된다.
 
 #### Cable head end
@@ -61,8 +65,10 @@ end system들은 다양한 애플리케이션들을 '호스팅' 할 수 있기 �
 - 각 가정으로부터 전송된 데이터는 → upstream 채널을 통해 Cable head end로 전달
 - 따라서, **각 가정의 유저가 동시에 서로 다른 비디오 파일을 내려받는 경우, 각 유저가 할당받는 actual rate는 실제 downstream 전송률보다 낮음**
 	`if several users are simultaneously downloading a video file on the downstream channel, the actual rate at which each user receives its video file will be significantly lower than the aggregate cable downstream rate.`
+
 - 반면, 소수의 유저가 웹서핑을 하는 경우, 각 유저는 full cable downstream rate 수준을 할당받을 수 있음
 	`if there are only a few active users and they are all Web surfing, then each of the users may actually receive Web pages at the full cable downstream rate. Because the users will rarely request a Web page at exactly the same time.`
+
 - upstream 채널 역시 여러 사용자들이 공유하기 때문에, 여러 송수신들을 조정하고 충돌을 회피하기 위한 multiple access protocol이 요구됨
 
 ### Home Access : Fiber to the Home (FTTH)
@@ -81,6 +87,7 @@ end system들은 다양한 애플리케이션들을 '호스팅' 할 수 있기 �
 	1. 각 가정은 Optical Network Terminator(**ONT**)를 가지고 있으며, 각 ONT는 neightborhood **splitter**에 연결됨
 	2. splitter는 각 가정을 단일 **shared optical fiber**로 연결하고, 이는 CO의 Optical Line Terminator(**OLT**)와 연결됨
 	3. OLT는 optcial - electrical 신호간의 변환을 제공하는 장치임. OLT는 광신호로부터 수신한 optical 신호를 전기 신호로 변환하여, telco의 router를 통해 이 신호를 Internet으로 송수신함
+
 - 각 가정에서는 ONT에 가정용 라우터를 연결하여 인터넷을 사용함
 
 ### Home Access : Other Cases
@@ -133,6 +140,7 @@ end system들은 다양한 애플리케이션들을 '호스팅' 할 수 있기 �
 - physical medium은 다양한 형태를 가지고 있으며, 꼭 transmitter-receiver pair가 동일한 매체를 사용할 필요는 없음
 - guided media (유도 매체) : 파동이 물리적 매체를 통해 전달됨
 	- (예) fiber-optic cable, twisted-pair copper wire, coaxial cable
+
 - unguided media (비유도 매체) : 파동이 공기를 매질로 하여 전파됨
 	- (예)  wireless LAN, digital satellite channel
 
@@ -159,6 +167,7 @@ end system들은 다양한 애플리케이션들을 '호스팅' 할 수 있기 �
 	- 장애물을 통과할 수 있음
 	- 모바일 사용자에게 연결을 제공할 수 있음
 	- 원거리 통신에 사용될 수 있음
+
 - 전파 환경과 송수신 장비 간의 거리에 크게 영향을 받음
 	- path loss : 신호의 밀도 감소
 	- shadow fading : 원거리를 이동하거나 장애물과 부딪혔을 때
