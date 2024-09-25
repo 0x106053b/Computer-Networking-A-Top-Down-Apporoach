@@ -12,14 +12,16 @@ end system들은 다양한 애플리케이션들을 '호스팅' 할 수 있기 �
 
 ## 1.2.1 Access Networks
 - 접속 네트워크 : end system을 edge router와 연결하는 네트워크
-![](Pasted%20image%2020240924152003.png)
+![](https://i.imgur.com/VqfmvqR.png)
+
 
 ### Home Access : Digital subscriber line (DSL)
 - 거주자는 wired local phone access를 제공하는 local telephone company(telco) 로부터 DSL internet access를 제공받음
 	- 즉, DSL 인터넷의 사용자라면 그 사용자의 전화 회사 역시 인터넷 회사와 동일한 회사겠구나!
 
 #### DSL modem
-![](Pasted%20image%2020240924152628.png)
+![](https://i.imgur.com/VWoq5vf.png)
+
 - DSL modem은 기존의 전화 회선을 사용하여 telco의 중앙 사무실(CO)의 DSLAM과 데이터를 송수신함
 - DSL modem은 Home PC로부터 디지털 데이터를 수신하고, 이를 high-frequency tones로 변환하여 전화 회선을 통해 CO로 전송함
 - 각 가정으로부터 수신된 analog signal은 CO의 DSLAM을 통해 digital format으로 변환됨
@@ -39,7 +41,7 @@ end system들은 다양한 애플리케이션들을 '호스팅' 할 수 있기 �
 - copper wire가 physical link 설계에 사용됨
 
 ### Home Access : Cable (HFC, Hybrid Fiber Coax)
-![](Pasted%20image%2020240924155950.png)
+
 - DSL이 기존의 전화 회선을 이용해 인터넷 통신을 제공한 것처럼, cable Internet access는 케이블 TV회사의 인프라스트럭쳐를 활용하는 방식
 	-  즉, Cable 인터넷의 사용자라면 그 사용자의 Cable TV 회사 역시 인터넷 회사와 동일한 회사겠구나!
 - 광케이블(Fiber cable)이 neighborhood-level junctions들을 연결하고, 그렇게 연결된 junction 내부의 각 가정들은 동축케이블(Coaxial cable)을 통해 연결된다.

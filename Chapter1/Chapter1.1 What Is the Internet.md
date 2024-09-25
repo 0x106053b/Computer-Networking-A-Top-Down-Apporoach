@@ -1,6 +1,7 @@
 
 ## 1.1.1 A Nuts and Bolts Description
-![](https://i.imgur.com/BAqP33m.png)
+![](https://i.imgur.com/VvJj9lm.png)
+
 
 
 ### Internet
