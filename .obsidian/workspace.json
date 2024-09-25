@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Chapter1/Chapter1.3 The Network Core.md",
+                "file": "Chapter1/Chapter1.1 What Is the Internet.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Chapter1/Chapter1.3 The Network Core.md",
+                "file": "Chapter1/Chapter1.1 What Is the Internet.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Chapter1/Chapter1.3 The Network Core.md",
+                "file": "Chapter1/Chapter1.1 What Is the Internet.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Chapter1/Chapter1.3 The Network Core.md"
+                "file": "Chapter1/Chapter1.1 What Is the Internet.md"
               }
             }
           }
@@ -149,10 +149,10 @@
   },
   "active": "020fec77fb01e1e3",
   "lastOpenFiles": [
+    "Chapter1/Chapter1.3 The Network Core.md",
     "Chapter1/Chapter1.2 The Network Edge.md",
     "Chapter1/Chapter1.1 What Is the Internet.md",
     "Chapter1/Chapter1 Introduction.md",
-    "Chapter1/Chapter1.3 The Network Core.md",
     "Chapter1/Images/Pasted image 20240924155943.png",
     "Chapter1/Images/Pasted image 20240925215902.png",
     "Chapter1/Images/Pasted image 20240925214646.png",
