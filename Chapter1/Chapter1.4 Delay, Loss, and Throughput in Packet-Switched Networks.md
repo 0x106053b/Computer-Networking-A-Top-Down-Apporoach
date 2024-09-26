@@ -20,7 +20,7 @@
 - queue가 비어있고, link를 통해 현재 전달되고 있는 패킷이 없다면 → queueing delay = 0
 - 반대로 queue에 여러 패킷이 대기중이며 link를 통해 패킷이 전달되고 있다면 → long queuing delay
 
->[!question] Q. packet switching에서는 모든 패킷이 수신된 후에야 전송이 시작되는데, 첫번째로 Queue에 도착한 패킷이라도 queueing delay != 0일 수 있는거 아닌가?
+>[!question] packet switching에서는 모든 패킷이 수신된 후에야 전송이 시작되는데, 첫번째로 Queue에 도착한 패킷이라도 queueing delay != 0일 수 있는거 아닌가?
 >No! '모든 패킷이 수신된 후에야 전송이 시작 (Store-and-Forward)' 된다는 것은 데이터를 구성하는 여러개의 패킷 모두를 라우터가 수신한 후에 전송한다는 의미가 아니라 **패킷 1개를 구성하는 프레임이 모두 전송되었을 때, 즉 패킷 1개가 온전히 수신되었을 때 다음 링크로 전송**한다는 의미! 따라서 패킷의 관점에서는 빈 queue에 모든 패킷이 수신되었을 때, 바로 다음 링크로 transmit할 수 있는 것
 
 #### Transmission Delay
@@ -40,4 +40,104 @@
 >**Propagation delay**
 >출발 라우터에서 도착 라우터로 도착하기까지의 시간 (after transmission delay). 두 라우터 사이의 거리에 영향을 받으나, 패킷의 길이, 링크의 transmission rate에는 영향을 받지 않음
 
-#### Total Nodal Dea
+#### Total Nodal Delay
+$$
+d_{nodal} = d_{proc} + d_{queue} + d_{trans} + d_{prop}
+$$
+- $d_{prop}$ 은 두 라우터 사이의 거리가 가까운 경우 무시해도 될 정도로 작은 수준
+- 그러나 두 라우터 사이의 거리가 멀 경우 $d_{prop}$ 이 $d_{nodal}$에서 차지하는 비율이 커질 수 있음
+- transmission rate가 큰 경우 $d_{trans}$는 무시해도 될 정도로 작은 수준
+- 그러나 low-speed dial-up modem link와 같이 transmission rate가 작은 경우 $d_{trans}$는 커질 수 있음
+- $d_{proc}$은 일반적으로 매우 작은 수준이며, router의 maximum thorughput에 영향을 주는 요소
+	- ❓ maximum thorughput : 라우터가 패킷을 **==forwarding==** 할 수 있는 최대의 rate
+
+
+<hr>
+
+
+## 1.4.2 Queuing Delay and Packet Loss
+### Queuing Delay
+- queuing delay는 패킷에 따라 달라질 수 있음
+	(예) 10개의 패킷이 queue에 동시에 도착했다고 할 때, 첫번째로 queue에 들어간 패킷은 queuing delay가 없지만 마지막으로 도착한 패킷은 첫번째 패킷에 비해 큰 queuing delay를 가짐
+
+- 따라서, queuing delay를 수치적으로 정의하기 위해서는 constant한 단일 수치보다는 통계적 수치를 활용
+	- average queuing delay
+	- variance of queuing delay
+	- probability of queuing delay
+
+- queuing delay를 결정하는 요소들
+	- 트래픽이 queue에 도착하는 rate
+	- link의 transmission rate
+	- 트래픽이 burst하게 도착하는지, periodically하게 규칙적으로 도착하는지의 여부 등
+
+#### Traffic Intensity
+- settings
+	- queue에 평균적으로 도착하는 초당 패킷의 개수 : a (units of packets/sec)
+	- queue에서 내보내지는 패킷의 transmission rate : R bits/sec
+	- 패킷을 구성하는 비트의 개수 : L bits
+
+- queue에 평균적으로 도착하는 초당 비트의 개수 : La bits/sec
+- **==(queue의 용량이 무한정 커진다고 할 때) traffic intensity : La/R sec==**
+	- queueing delay와 비례함
+
+- if La/R > 1
+	- queue에 초당 도착하는 비트의 수가 transmission rate를 초과함
+	- queue는 무한정 커짐
+	- 따라서 traffic intensity가 1보다 작도록 설계되어야 함
+
+- if La/R ≤ 1
+	- L/R 초당 1개의 패킷이 periodically 도착한다면
+		- 모든 도착하는 패킷은 empty queue로 들어가게 됨. queuing delay = 0
+	- 패킷들이 burst but periodically 도착한다면
+		- 첫번째 패킷은 queuing delay가 없지만 두번째 패킷은 L/R초의 queuing delay를 가짐
+		- n번째 패킷은 (n-1)L/R초의 queuing delay를 가짐
+		- queuing delay의 평균 : $\frac{\sum_{k=1}^{n}{(k-1)L/R}}{n} = (n-1)L/(2R)$
+
+- La/R 값만으로는 queuing delay statistics를 모두 표현할 수 없음
+![](https://i.imgur.com/tr7B3aB.png)
+>[!question] Example 1
+>traffic intensity La/R ≒ 0 이라면
+>**패킷들은 드물게 queue안에 대기중인 패킷을 발견하므로 average queuing delay는 0과 비슷한 수준**
+
+>[!question] Example 2
+>**traffic intensity가 1과 가까워질수록 average queuing delay는 무한히 증가함**
+>traffic intensity La/R에 가까워진다면  La > R 인 시점이 발생할 것이고 (burst하게 도착) queue의 길이가 길어지며 queuing delay가 발생함. La < R 인 시점에 queue의 길이가 줄어듦
+
+### Packet Loss
+- 현실에서의 queue는 용량이 유한하기 때문에, traffic intensity가 1에 도달했을 때 queue가 무한히 커지지 않고, 초과하는 수의 packet을 drop하며 full queue상태가 됨 (= packet loss)
+- lost packet의 비율은 traffic intensity에 비례함
+- performance of node는 queuing delay 뿐만 아니라 packet loss의 비율로도 평가될 수 있음
+- 목적지에 모든 패킷이 완전하게 전송되는 것을 보장하기 위해 lost packets들은 재전송됨
+
+
+<hr>
+
+
+## 1.4.3 End-to-End Delay
+- single router가 존재하는 상황에서의 delay를 넘어, source와 desitnation사이에 여러 라우터가 존재하는 상황을 가정해보자.
+- setting
+	- N-1 routers between source and destination host (라우터 N-1개 = link N개)
+	- network is uncongested
+	- 모든 host와 라우터의 transmission rate : R bits/sec
+
+- $d_{end-to-end} = N(d_{proc} + d_{trans} + d_{prop})$
+	- 이 때, $d_{trans}$ = L / R (L is the packet size)
+
+
+<hr>
+
+
+## 1.4.4 Throughput in Computer Networks
+- delay, packet loss외에도 네트워크 성능 평가를 위해서는 end-to-end thorughput을 고려해야 함
+- **instantaneous throughput** : host B가 순간적으로 수신한 파일의 비트 (in bits/sec)
+	(예) Internet telephony는 낮은 delay와 임계치 수준 이상의 instantaneous thorughput을 필요로 함. 처리율이 아주 높기보다는 일정 임계값 수준 이상을 안정적으로 유지하는 것이 중요
+	(예) file transfer는 delay는 크게 고려 요소가 아니며, 가능한 한 높은 thorughput을 가지는 것이 필요
+
+- **average thorughput** : 파일이 F bits로 구성되어 있고 host B가 파일을 모두 수신하는데 T초가 소요되었다면, F/T bits/sec
+
+>[!question] Example 1
+>![](https://i.imgur.com/dEQeR25.png)
+
+>[!question] Example 2
+>![](https://i.imgur.com/78YBuE0.png)
+
