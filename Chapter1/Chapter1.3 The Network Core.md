@@ -228,8 +228,31 @@
 	- provider 네트워크 안의 한개 이상의 라우터 집합. customer 네트워크가 provider 네트워크와 연결될 수 있도록 함
 	- 가장 하위의 access network를 제외한 모든 계층에 존재함 (access network는 provider X 이므로)
 	- customer는 제3자 telecommunication provider로부터 고속 접속 링크를 대여하여 PoP의 라우터에 접속할 수 있음
+
 - **Multi-home**
 	- 2개 이상의 provider network에 연결하는 것
-	- 
+		(예) An access ISP may multi-home with two regional ISPs and also with a tier-1 ISP.
+	- 한 provider로의 접속이 실패하면 다른 provider로 접속할 수 있기 때문에, failure에 robust함
+
+- **Peer**
+	- customer ISP가 provider ISP에게 traffic에 비례하여 지불하는 비용을 감소시키기 위해, 동일 level의 인근한 ISP들은 higher-tier ISP와의 연결 없이 서로 상호 연결될 수 있음 (can peer)
+	- Network Structure 2의 global transmit ISP들이 연결되는 것 역시 peer
+
+- **IXPs (Internet Exchange Point)**
+	- multiple ISPs들이 peer할 수 있는 meeting point
+
+#### Network Structure 5
+![](https://i.imgur.com/BUYwxdp.png)
+
+- ==**Network Structure 5 : Network Structure4 + content-provider networks**==
+- 대표적인 예시로, Google datacenter는 content-provider network의 선두자로, 50-100개의 data center들과 함께 Google의 private TCP/IP network를 연결함
+- upper-tier ISP와의 연결을 우회하기 위해 lower-tier ISP와 직접 peering
+- 1-tier ISP를 통해 도달할 수 있는 access network를 위해 google network 역시 1-tier ISP와 연결됨
+	- 연결된 1-tier ISP에게 트래픽에 비례하는 요금을 지불
+	- Users and content providers are customers of lower-tier ISPs
+
+- By Creating its own network,
+	- content provider은 upper-tier ISP로 지출되는 비용을 감소시킴
+	- 그들의 서비스가 유저에게 도달하는 과정에 통제권을 가짐
 
 

@@ -18,8 +18,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "35d066dfd33edeb9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Chapter1/Chapter1.4 Delay, Loss, and Throughput in Packet-Switched Networks.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -85,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Chapter1/Chapter1.3 The Network Core.md",
+                "file": "Chapter1/Chapter1.4 Delay, Loss, and Throughput in Packet-Switched Networks.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Chapter1/Chapter1.3 The Network Core.md",
+                "file": "Chapter1/Chapter1.4 Delay, Loss, and Throughput in Packet-Switched Networks.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Chapter1/Chapter1.3 The Network Core.md"
+                "file": "Chapter1/Chapter1.4 Delay, Loss, and Throughput in Packet-Switched Networks.md"
               }
             }
           }
@@ -147,11 +160,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "020fec77fb01e1e3",
+  "active": "35d066dfd33edeb9",
   "lastOpenFiles": [
+    "Chapter1/Chapter1.3 The Network Core.md",
+    "Chapter1/Chapter1.4 Delay, Loss, and Throughput in Packet-Switched Networks.md",
     "README.md",
     "Chapter2/Chapter2 Introduction.md",
-    "Chapter1/Chapter1.3 The Network Core.md",
     "Chapter1/Chapter1.2 The Network Edge.md",
     "Pasted image 20240925233407.png",
     "Chapter1/Chapter1.1 What Is the Internet.md",
