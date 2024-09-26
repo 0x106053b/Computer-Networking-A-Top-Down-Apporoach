@@ -1,6 +1,6 @@
 ### End Systems ( = Hosts)
 end system들은 다양한 애플리케이션들을 '호스팅' 할 수 있기 때문에 'host'라고 불리기도 한다.
-- desktop computers (예 : PC, Macs and Linux boxes)
+- desktop comp uters (예 : PC, Macs and Linux boxes)
 - servers (예 : Web and e-mail servers)
 - mobile devices (예 : laptops, smartphones and tablets)
 

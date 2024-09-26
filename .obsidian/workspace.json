@@ -4,7 +4,7 @@
     "type": "split",
     "children": [
       {
-        "id": "a4f597cbabc4939a",
+        "id": "8d7635b922b14044",
         "type": "tabs",
         "children": [
           {
@@ -13,19 +13,19 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Chapter1/Chapter1.3 The Network Core.md",
+                "file": "Chapter1/Chapter1.4 Delay, Loss, and Throughput in Packet-Switched Networks.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "35d066dfd33edeb9",
+            "id": "c2949b3ea287f1bd",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Chapter1/Chapter1.4 Delay, Loss, and Throughput in Packet-Switched Networks.md",
+                "file": "Chapter1.5.md",
                 "mode": "source",
                 "source": false
               }
@@ -98,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Chapter1/Chapter1.4 Delay, Loss, and Throughput in Packet-Switched Networks.md",
+                "file": "Chapter1.5.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Chapter1/Chapter1.4 Delay, Loss, and Throughput in Packet-Switched Networks.md",
+                "file": "Chapter1.5.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Chapter1/Chapter1.4 Delay, Loss, and Throughput in Packet-Switched Networks.md"
+                "file": "Chapter1.5.md"
               }
             }
           }
@@ -160,13 +160,14 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "35d066dfd33edeb9",
+  "active": "c2949b3ea287f1bd",
   "lastOpenFiles": [
-    "Chapter1/Chapter1.3 The Network Core.md",
     "Chapter1/Chapter1.4 Delay, Loss, and Throughput in Packet-Switched Networks.md",
+    "Chapter1.5.md",
+    "Chapter1/Chapter1.2 The Network Edge.md",
+    "Chapter1/Chapter1.3 The Network Core.md",
     "README.md",
     "Chapter2/Chapter2 Introduction.md",
-    "Chapter1/Chapter1.2 The Network Edge.md",
     "Pasted image 20240925233407.png",
     "Chapter1/Chapter1.1 What Is the Internet.md",
     "Chapter1/Chapter1 Introduction.md",

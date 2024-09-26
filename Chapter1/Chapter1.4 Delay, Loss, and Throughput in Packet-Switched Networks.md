@@ -136,8 +136,74 @@ $$
 - **average thorughput** : 파일이 F bits로 구성되어 있고 host B가 파일을 모두 수신하는데 T초가 소요되었다면, average thorughput = F/T bits/sec
 
 >[!example] Example 1
->![](https://i.imgur.com/dEQeR25.png)
+>![](https://i.imgur.com/2b2k5hW.png)
+>**settings**
+>- $R_s$ 서버와 라우터 사이의 rate
+>- $R_c$ 라우터와 클라이언트 사이의 Rate
+>- 전체 네트워크를 지나는 비트는 서버에서 전송되어 클라이언트로 향하는 비트 뿐임
+>
+>**server to client thorughput?**
+>- $R_s < R_c$라면
+>	- 서버에서 전송된 비트가 라우터를 향해 정상적으로 flow하고, 라우터에서 클라이언트를 향해 $R_c$ 의 rate로 전송됨
+>
+>- 반대로 $R_s > R_c$ 라면
+>	- 라우터가 비트를 수신하는 속도만큼 빠르게 비트를 송신할 수 없음
+>	- bits will only leave the router at race $R_c$ giving an **end2end throughput of $R_C$.**
+>	- 라우터에서 전송을 대기하는 비트는 무한정 증가함
+>
+>**In Conclusion,**
+>- in simple two-link situation, the throughput is $min(R_c, R_s)$
+>- time taking to transfer large file of F bits from client to server = $F/min(R_c, R_s)$
 
 >[!example] Example 2
->![](https://i.imgur.com/78YBuE0.png)
+>![](https://i.imgur.com/pr1um3z.png)
+>**settings**
+>- 여러개의 라우터를 연결하는 N개의 transmission links
+>- 각 link의 transmission rate는 $R_1$, $R_2$, ..., $R_n$
+>
+>**Let's jump to conclusion!**
+>- simple two-link situation과 동일하게 end2end throughput = $min(R_1, R_2, ..., R_n)$
+
+>[!example] Example 3
+>![](https://i.imgur.com/mE2SMoK.png)
+>**settings**
+>- 종단 server와 client는 computer network를 통해 연결됨
+>- $R_s$ 네트워크와 access link로 연결된 서버의 rate
+>- $R_c$ 네트워크와 access link로 연결된 클라이언트의 rate
+>- core of communication network의 링크들은 모두 매우 높은 rate를 가짐 ($>R_c, R_s$)
+>- 전체 네트워크를 지나는 비트는 서버에서 전송되어 클라이언트로 향하는 비트 뿐임
+>
+>**Let's jump to conclusion!**
+>- 네트워크 코어를 이루는 링크의 rate가 매우 크기 때문에, end2end throughput = $min(R_c, R_s)$
+>- 즉, 오늘날 인터넷 네트워크에서 throughput에서 문제가 되는 지점은 일반적으로 access network
+
+>[!example] Example 4
+>![](https://i.imgur.com/CfZXxTI.png)
+>**settings**
+>- 10개의 서버와 10개의 클라이언트가 core of computer network를 통해 연결됨
+>- 10개의 server-client pair에서 동시에 10개의 download가 발생하고 있는 상황
+>- R 네트워크 코어에 위치한 하나의 공통 링크의 rate ($>R_c, R_s$)
+>- $R_s$ 네트워크와 access link로 연결된 서버의 rate
+>- $R_c$ 네트워크와 access link로 연결된 클라이언트의 rate
+>
+>**Let's jump to conclusion!**
+>- R이 $R_c$, $R_s$에 비해 수백수천배 크므로, end2end throughput = $min(R_c, R_s)$
+>
+>**How about ...**
+>- $R_s=2Mbps$, $R_c=1Mbps$, $R=5Mbps$ 라면?
+>- shared core link의 rate는 500kbps 수준으로 낮아짐
+>- end2end throughout  = $min(R_c, R_s, 500kbps) = 500kbps$
+>- `Throughput depends not only on the transmission rates of the links along the path, but also on the intervening traffic.`
+
+
+
+
+
+
+
+
+
+
+
+
 
