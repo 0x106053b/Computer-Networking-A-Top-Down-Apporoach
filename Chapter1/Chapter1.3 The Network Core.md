@@ -181,4 +181,55 @@
 
 ## 1.3.3 A Network of Networks
 
+### A Network of Networks
+- access ISP는 wired/wireless connectivity를 제공함
+	(예) DSL, cable, FTTH, WiFi and cellular
+- end users들을 access ISP에 연결하는 것을 넘어, access ISP간의 interconnection도 필요
+
+### ISP interconnection
+- 방법1. 각 access ISP를 서로 직접 연결 (mesh design)
+	- 비용이 많이 듬
+	- 세상에 존재하는 다른 access ISP와의 1:1 link를 생성해야 한다는 어려움\
+
+#### Network Structure 1
+- ==**Network Sturcture 1 : 단일 global ISP를 모든 access ISP와 연결하여 interconnection 구현**==
+	- global ISP : 전 지구를 아우르는 라우터와 link의 집합이자, 수많은 access ISP의 근처에 라우터를 설치
+	- 광범위한 지역을 커버하므로 비용 소모가 큼
+		- 연결을 제공하는 access ISP에 traffic에 비례하는 과금을 시키는 방식으로 이익 실현 가능
+		- global transit ISP는 provider, access ISP는 customer인 구조
+
+#### Network Structure 2
+- **==Network Structure 2 : 여러개의 global ISP를 모든 access ISP와 연결하여 interconnectoin 구현==**
+	- **==2-tier hierarchy==**
+	- Network structure 1에서처럼 global ISP가 수익성을 가진다면, 시장 원리에 따라 여러개의 global ISP가 생길 것!
+	- access ISP는 여러 competing global transit ISP 중에서 가격과 제공 서비스를 기준으로 선택할 수 있게 되므로 Network structure 1보다 2를 더 선호함
+	- 여러개의 global ISP들은 상호 연결되어야 함
+		- 그렇지 않으면 서로 다른 global ISP에 연결된 access ISP들은 서로 통신할 수 없음 (exclusive)
+
+#### Network Strucrue 3
+- ==**Network Structure 3== : $\sum{access ISP}$ ⊂  $\sum{regional ISP}$ ⊂ $\sum{global ISP}$==**
+	- **==multi-tier hierarchy==**
+	- Network structure 2가 $\sum{access ISP}$ ⊂ $\sum{global ISP}$ 로 이루어진 2-tier였다면, Network structure 3은 regional ISP등을 추가적인 계층으로 삽입한 multi-tier 구조임
+
+>[!info] multi-tier hierarchy ISPs
+>현실적으로 모든 지역을 커버하는 ISP는 존재할 수 없으므로, 지역 단위의 regional ISP (lower-tier ISP) 가 존재하고, 각 regional ISP는 tier-1 ISP에 연결됨 (access ISP - regional ISP - tier 1 ISP)
+>(물론 access ISP가 tier 1 ISP에 직접 연결하는 방법도 있음)
+>
+>**각 ISP는 자신의 상위 계층의 ISP의 client로서 그들에게 비용을 지불함**
+>따라서 top-tier ISP는 다른 provider에게 돈을 지불하지 않음 (상위 계층이 존재 X)
+>
+
+>[!question] Example 1
+>For example, in China, there are **access ISPs in each city**, which connect to **provincial ISPs**, which in turn connect to **national ISPs**, which finally connect to **tier-1 ISPs**.
+
+#### Network Strucrue 4
+- **==Network Structure 4 : Network Structure 3 + PoPs + multi-homing + peering + IXPs==**
+- **PoPs (Points of Presence)**
+	- provider 네트워크 안의 한개 이상의 라우터 집합. customer 네트워크가 provider 네트워크와 연결될 수 있도록 함
+	- 가장 하위의 access network를 제외한 모든 계층에 존재함 (access network는 provider X 이므로)
+	- customer는 제3자 telecommunication provider로부터 고속 접속 링크를 대여하여 PoP의 라우터에 접속할 수 있음
+- **Multi-home**
+	- 2개 이상의 provider network에 연결하는 것
+	- 
+
 
