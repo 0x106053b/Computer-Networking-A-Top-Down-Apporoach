@@ -119,7 +119,8 @@
 	- (예) 한 link가 1초에 8k frames을 전송하고, 한 time slot이 8 bits로 이루어져 있다면, 각 connection circuit은 64kbps transmission rate를 가짐
 	- ❓ 한 frame 내의 time slot 개수가 고려되지 않는 이유는, 한 frame 내의 여러 time slot 각각은 다른 connection circuit을 생성하므로, 특정 connection의 시점에서는 1개의 frame당 time slot 1개 만큼을 전송할 수 있음
 
->[!info] circuit switching 예시
+>[!example] Example
+>**circuit switching 예시**
 >- Host A로부터 Host B로 640k bits를 전송하려고 함
 >- 네트워크는 프레임당 24개의 time slots를 가진 TDM 방식을 채택
 >- bit rate = 1.536 Mbps
@@ -146,7 +147,7 @@
 
 - 현대 사회에서 더 지배적으로 사용되는 방식은 packet switching
 
->[!question] Example 1
+>[!example] Example 1
 >**Q. 사용자가 1 Mbps 링크를 공유한다고 가정하고, 각 사용자들은 활동 시간과 비활동 시간을 반복한다고 하자. 사용자는 전체 시간에서 10%만 활동하며 나머지 90% 시간에는 활동하지 않는다.**
 >
 >**Setting**
@@ -164,7 +165,7 @@
 >
 >💡 10명 이상의 동시 사용자가 있을 확률은 매우 희박하므로, circuit switching과 packet switching은 거의 동일한 성능을 가짐 (packet switch는 여기서 동일한 성능으로 3배 이상의 사용자 수를 수용할 수 있음)
 
->[!question] Example2
+>[!example] Example2
 > **Q. 10명의 사용자가 있다고 가정하자. 1번과 동일하게, 사용자는 1 Mbps 링크를 공유한다. 한 사용자가 한번에 1,000비트 패킷을 1,000개 생성하고 다른 사용자는 패킷을 생성하지 않는다.**
 > 
 > **Circuit Switching**
@@ -219,7 +220,7 @@
 >따라서 top-tier ISP는 다른 provider에게 돈을 지불하지 않음 (상위 계층이 존재 X)
 >
 
->[!question] Example 1
+>[!example] Example
 >For example, in China, there are **access ISPs in each city**, which connect to **provincial ISPs**, which in turn connect to **national ISPs**, which finally connect to **tier-1 ISPs**.
 
 #### Network Strucrue 4

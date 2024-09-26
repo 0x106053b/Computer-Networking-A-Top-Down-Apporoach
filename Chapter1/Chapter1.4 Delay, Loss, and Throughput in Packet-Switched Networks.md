@@ -95,11 +95,11 @@ $$
 
 - La/R 값만으로는 queuing delay statistics를 모두 표현할 수 없음
 ![](https://i.imgur.com/tr7B3aB.png)
->[!question] Example 1
+>[!example] Example 1
 >traffic intensity La/R ≒ 0 이라면
 >**패킷들은 드물게 queue안에 대기중인 패킷을 발견하므로 average queuing delay는 0과 비슷한 수준**
 
->[!question] Example 2
+>[!example] Example 2
 >**traffic intensity가 1과 가까워질수록 average queuing delay는 무한히 증가함**
 >traffic intensity La/R에 가까워진다면  La > R 인 시점이 발생할 것이고 (burst하게 도착) queue의 길이가 길어지며 queuing delay가 발생함. La < R 인 시점에 queue의 길이가 줄어듦
 
@@ -133,11 +133,11 @@ $$
 	(예) Internet telephony는 낮은 delay와 임계치 수준 이상의 instantaneous thorughput을 필요로 함. 처리율이 아주 높기보다는 일정 임계값 수준 이상을 안정적으로 유지하는 것이 중요
 	(예) file transfer는 delay는 크게 고려 요소가 아니며, 가능한 한 높은 thorughput을 가지는 것이 필요
 
-- **average thorughput** : 파일이 F bits로 구성되어 있고 host B가 파일을 모두 수신하는데 T초가 소요되었다면, F/T bits/sec
+- **average thorughput** : 파일이 F bits로 구성되어 있고 host B가 파일을 모두 수신하는데 T초가 소요되었다면, average thorughput = F/T bits/sec
 
->[!question] Example 1
+>[!example] Example 1
 >![](https://i.imgur.com/dEQeR25.png)
 
->[!question] Example 2
+>[!example] Example 2
 >![](https://i.imgur.com/78YBuE0.png)
 
