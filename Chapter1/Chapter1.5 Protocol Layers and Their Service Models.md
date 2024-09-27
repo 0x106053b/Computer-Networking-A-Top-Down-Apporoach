@@ -105,4 +105,8 @@
 	- segment는 application layer의 message를 encapsulation 한 것
 
 >[!info] added informations on transport layer
->- 수신측의 transport layer가 
+>- 수신측의 transport layer가 적절한 application에 message를 전달할 수 있도록 하는 정보
+>- 수신측이  error-detection bits를 검출하여 message가 송수신되는 동안 데이터가 바뀌었는지를 확인할 수 있게 하는 정보
+
+
+
