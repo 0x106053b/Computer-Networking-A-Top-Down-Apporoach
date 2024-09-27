@@ -100,13 +100,21 @@
 
 ### Encapsulation
 - (1) host의 application layer가 데이터를 전송하려고 할 때, 해당 packet (여기서는 message)을 transport layer로 전달
-- (2) transport layer은 message를 전달받아 추가적인 정보 ( = hedaer) 를 message에 추가
+- (2) transport layer은 message를 전달받아 추가적인 정보 ( = header) 를 message에 추가
 	- 이때의 segment ( = header + message) 는 수신 host의 transport layer에서 사용/해석됨
-	- segment는 application layer의 message를 encapsulation 한 것
+	- segment는 application layer의 message를 **==encapsulation==** 한 것
 
 >[!info] added informations on transport layer
 >- 수신측의 transport layer가 적절한 application에 message를 전달할 수 있도록 하는 정보
 >- 수신측이  error-detection bits를 검출하여 message가 송수신되는 동안 데이터가 바뀌었는지를 확인할 수 있게 하는 정보
 
+- (3) transport layer은 segment를 network layer로 전달
+- (4) network layer은 segment를 전달받아 추가적인 정보 ( = header) 를 segment에 추가
+	- source - destination end system의 system address (ex. IP address) 와 같은 정보를 추가
+	- 이때 segment  + network layer header = datagram 이라 함
+- (5) network layer은 datagram을 link layer로 전달
+- (6) link layer은 datagram을 전달받아 추가적인 정보 ( = hedaer) 를 datagram에 추가
+	- 이 때 datagram + link layer header = frame
+- 💡 `Thus, we see that at each layer, a packet has two types of fields: header fields and a payload field. The payload is typically a packet from the layer above.`
 
 
