@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "676a8013ef6c7727",
+        "id": "604b04501d2152ed",
         "type": "tabs",
         "children": [
           {
-            "id": "3ada6aaab29b8f31",
+            "id": "5da8704240db07be",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -147,10 +147,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "3ada6aaab29b8f31",
+  "active": "5da8704240db07be",
   "lastOpenFiles": [
-    "2024-09-27.md",
+    "무제 파일.canvas",
     "Chapter2/Chapter2.1 Principles of Network Applications.md",
+    "2024-09-27.md",
     "Chapter2/Chapter2 Introduction.md",
     "Chapter1/Chapter1 Introduction.md",
     "Chapter1/Chapter1.7  History of Computer Networking and the Internet.md",
