@@ -71,6 +71,18 @@
 - physical layer의 프로토콜은 link와 link의 transmission rate에 의존함
 	(예) `Ethernet has many physical-layer protocols: one for twisted-pair copper wire, another for coaxial cable.`
 
+>[!info] TCP/IP 네트워크 5계층
+>Application Layer
+>- 사용자 인터페이스 부분
+>- 사용자는 내부 네트워킹 작용을 이해하지 않고도 application layer를 통해 메세지를 주고받을 수 있음
+>Transport Layer
+>- 데이터 송수신을 위해 host와 host를 연결 (예 : client-server)
+>Network Layer
+>- 데이터의 이동 경로를 IP address 기반으로 설정
+>Link Layer
+>- 노드와 노드간의 연결을 담당
+>- 물리적 회선을 통한 
+
 
 <hr>
 
