@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Chapter1.5.md",
+                "file": "Chapter1/Chapter1.5 Protocol Layers and Their Service Models.md",
                 "mode": "source",
                 "source": false
               }
@@ -98,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Chapter1.5.md",
+                "file": "Chapter1/Chapter1.5 Protocol Layers and Their Service Models.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Chapter1.5.md",
+                "file": "Chapter1/Chapter1.5 Protocol Layers and Their Service Models.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Chapter1.5.md"
+                "file": "Chapter1/Chapter1.5 Protocol Layers and Their Service Models.md"
               }
             }
           }
@@ -163,7 +163,7 @@
   "active": "c2949b3ea287f1bd",
   "lastOpenFiles": [
     "Chapter1/Chapter1.4 Delay, Loss, and Throughput in Packet-Switched Networks.md",
-    "Chapter1.5.md",
+    "Chapter1/Chapter1.5 Protocol Layers and Their Service Models.md",
     "Chapter1/Chapter1.2 The Network Edge.md",
     "Chapter1/Chapter1.3 The Network Core.md",
     "README.md",
