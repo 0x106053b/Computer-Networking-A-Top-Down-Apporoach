@@ -72,19 +72,37 @@
 	(예) `Ethernet has many physical-layer protocols: one for twisted-pair copper wire, another for coaxial cable.`
 
 >[!info] TCP/IP 네트워크 5계층
->Application Layer
->- 사용자 인터페이스 부분
->- 사용자는 내부 네트워킹 작용을 이해하지 않고도 application layer를 통해 메세지를 주고받을 수 있음
->Transport Layer
->- 데이터 송수신을 위해 host와 host를 연결 (예 : client-server)
->Network Layer
->- 데이터의 이동 경로를 IP address 기반으로 설정
->Link Layer
->- 노드와 노드간의 연결을 담당
->- 물리적 회선을 통한 
+>**Application Layer**
+>다른 종단 시스템에서 실행되는 애플리케이션의 프로세스가 서로 메시지를 보내는 방법을 정의
+>
+>**Transport Layer**
+>네트워크 계층에서 보내온 데이터 정렬, 오류 정정 등을 수행하고 ==**신뢰할 수 있는 통신**==을 확보
+>
+>**Network Layer**
+>다른 네트워크와 통신하기 위한 경로를 설정하고 ==**논리 주소 (IP)**==를 결정
+>
+>**Link Layer**
+>네트워크 기기 간 데이터 전송 및 ==**물리 주소(MAC)**==를 결정
+>
+>**Physical Layer**
+>물리적인 연결과 전기 신호 변환/제어를 담당
 
 
 <hr>
 
 
 ## 1.5.2 Encapsulation
+![](https://i.imgur.com/Ia73t6C.png)
+- 위 그림은 데이터가 end system의 protocol stack을 타고 내려와 intervening link-layer의 switch와 router를 거치면서 각 노드의 protocol stack을 거슬러 올라갔다가 내려오는 과정, 그리고 마지막 목적지 end system의 protocol stack을 거슬러 올라가 application layer에 비로소 도착하는 과정을 도식화
+	- 💡 link-layer switch와 router는 packet-switch (not circuit switch) 기능을 함
+	- 💡 link-layer switch와 router는 5단계의 모든 protocol stack을 구현하지 않음.
+		- (예) router은 1~3 layer를 구현하지만 switch는 1~2 layer만을 구현함. 다시 말해, router에서는 IP Protocol을 작동시킬 수 있지만 link-layer switch에서는 그렇지 않음. link-layer switch는 layer 2 addresses (가령, Ethernet address) 만을 해석할 수 있음
+
+### Encapsulation
+- (1) host의 application layer가 데이터를 전송하려고 할 때, 해당 packet (여기서는 message)을 transport layer로 전달
+- (2) transport layer은 message를 전달받아 추가적인 정보 ( = hedaer) 를 message에 추가
+	- 이때의 segment ( = header + message) 는 수신 host의 transport layer에서 사용/해석됨
+	- segment는 application layer의 message를 encapsulation 한 것
+
+>[!info] added informations on transport layer
+>- 수신측의 transport layer가 
