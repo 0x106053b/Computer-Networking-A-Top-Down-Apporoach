@@ -50,3 +50,85 @@
 >In the context of a communication session between a pair of processes, the process that initiates the communication (that is, initially contacts the other process at the beginning of the session) is labeled as the client. The process that waits to be contacted to begin the session is the server.
 
 ### The Interface Between the Process and the Computer Network
+### Socket
+![](https://i.imgur.com/qPMTgRW.png)
+
+- 프로세스는 socket을 통해 메세지를 전송하고, socket으로부터 메세지를 수신
+- 위 그림을 참고하였을 때, ==socket은 application layer와 transport layer 사이의 인터페이스==
+	- 💡 따라서 Application Programming Interface = API 라고 함
+- application 개발자는 application-layer side의 socket을 통제할 수 있지만, transport-layer side의 socket은 통제할 수 없음
+- ==application 개발자가 transport-layer에서 통제권을 가지는 것은==
+	- ==transport protocol의 선택==
+	- ==maximum buffer, maximum segment size와 같은 일부 transport-layer의 파라미터 조정==
+
+>[!question] 질문
+>그렇다면 application 개발자는 application-layer의 통제 권한만을 가진다는 틀린 표현인가?
+
+### Addressing Processes
+- 한 host위의 프로세스에서 다른 host위의 프로세스로 packet을 전달하려면, receiving process의 주소가 필요
+- receiving process를 특정하기 위해서는
+	- destination host의 주소
+	- destination host내의 process 식별자 (여러개의 프로세스가 동시에 실행 중일 수 있으므로)
+
+#### IP address
+- 32-bit의 주소
+- uniquely identifying the host
+
+#### Port Number
+- host 내부의 process 식별자 (more specifically, the receiving socket)
+- 널리 사용되는 application은 특정 port number를 할당받기도 함
+	(예) Web Server의 port number : 80
+	(예) mail server process (using the SMTP protocol)의 port number : 25
+
+
+<hr>
+
+
+## 2.1.3 Transport Services Available to Applications
+- 앞 절에서 말한 것처럼, socket은 application layer와 transport layer 사이의 인터페이스
+- application이 socket을 통해 메세지를 전송하면, transport layer protocol은 socket으로부터 전달받은 메세지를 receiving process의 socket으로 전송할 책임을 가짐
+- ==application을 개발할 때에는, available transport-layer protocol을 선택해야 함==
+	- ❓ 그렇다면 어떤 기준에 의해 transport-layer protocol을 선택할 수 있을까?
+
+### Reliable Data Transfer
+- reliable data delivery를 제공하는 protocol
+- computer network 상에서 packet 분실이 이루어질 수 있음
+	- 라우터의 buffer가 용량을 넘어 drop됨 ( = packet loss)
+	- 전송 과정에서 패킷의 비트가 손상되어 router 혹은 host에 의해 버려짐
+- 여러 application에서 데이터의 손실은 심각한 결과를 초래할 수 있으므로, 신뢰성 있는 데이터 전송은 필수
+
+>[!info] loss-tolerant application
+> **packet loss가 일정 수준까지는 용인되는 application. reliable data transfer가 필요하지 않음**
+> (예) conversational audio/video chat 과 같은 multimedia application은 lost data가 소량의 glitch를 유발할 뿐 심각한 장애를 초래하지 않음
+
+#### Throughput
+- sending process가 receiving process로 보낼 수 있는 bits rate
+- network path상의 대역폭을 여러 프로세스가 공유하고, 그 상태는 계속 변하므로 available throughput은 변동함
+- 어떤 transport-layer protocol은 이 available throughput rate를 일정 수준 이상으로 보장함
+	- `With such a service, the application could request a guaranteed throughput of r bits/sec, and the transport protocol would then ensure that the available throughput is always at least r bits/sec.`
+-  ==Bandwidth-sensitive applications== : throughput requirements를 가진 application
+	(예) multimedia applications
+	→ 그러나 어떤 multimedia applications은 매 시점 available throughput 환경에 따라 적절한 수준의 rate를 가지도록 데이터를 다르게 인코딩하는 기법을 채택함 (인터넷 상태 안좋으면 화질 구려짐)
+- ==Elastic applications== : 그때그때 available한 수준의 throughput을 유동적으로 사용하는 application
+	(예) electronic mail, file transfer, and Web transfers
+
+#### Timing
+- transport-layer protocol은 통신 시간을 보장할 수도 있음
+- interactive real-time applications (Internet telephony), 가상 환경, 온라인 미팅, 멀티플레이어 게임 등 사용자의 액션과 서버의 응답 사이에 delay가 작아야 자연스러운 applications들에 주로 필요함
+
+#### Security
+- transport protocol이 전송 프로세스로부터의 데이터를 암호화하여 destination에 전송할 수 있음
+- 반대로 receiving host의 transport layer는 암호화된 데이터를 전달받은 후 복호화함
+- 이 외에도 data integrity, end-point authentification 등
+
+
+<hr>
+
+
+## 2.1.4 Transport Services Provided by the Internet
+
+
+
+
+
+

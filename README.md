@@ -1,4 +1,13 @@
-# Computer-Networking-A-Top-Down-Apporoach
+# Computer-Networking-A-Top-Down-Apporoach (7th Edition)
 
-SWE2024-02 Computer Network 의 `Computer Networking A Top Down Approach`를 읽고 정리한 레포지토리 입니다. 
-Obsidian을 이용해 작성하였으므로 일부 Format이 깨져서 보일 수 있습니다.
+## Chapter 1
+- [Chapter1.1 What Is the Internet](Chapter1.1%20What%20Is%20the%20Internet.md)
+- [Chapter1.2 The Network Edge](Chapter1.2%20The%20Network%20Edge.md)
+- [Chapter1.3 The Network Core](Chapter1.3%20The%20Network%20Core.md)
+- [Chapter1.4 Delay, Loss, and Throughput in Packet-Switched Networks](Chapter1.4%20Delay,%20Loss,%20and%20Throughput%20in%20Packet-Switched%20Networks.md)
+- [Chapter1.5 Protocol Layers and Their Service Models](Chapter1.5%20Protocol%20Layers%20and%20Their%20Service%20Models.md)
+- [Chapter1.6 Networks Under Attack](Chapter1.6%20Networks%20Under%20Attack.md)
+- [Chapter1.7  History of Computer Networking and the Internet](Chapter1.7%20%20History%20of%20Computer%20Networking%20and%20the%20Internet.md)
+
+## Chapter 2
+- [Chapter2.1 Principles of Network Applications](Chapter2.1%20Principles%20of%20Network%20Applications.md)

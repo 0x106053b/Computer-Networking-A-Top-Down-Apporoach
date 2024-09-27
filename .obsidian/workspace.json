@@ -69,7 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 311.5
   },
   "right": {
     "id": "ae0072a41a242c4a",
@@ -149,20 +149,20 @@
   },
   "active": "5da8704240db07be",
   "lastOpenFiles": [
-    "무제 파일.canvas",
+    "Chapter1/Chapter1.3 The Network Core.md",
+    "Chapter1/Chapter1.2 The Network Edge.md",
     "Chapter2/Chapter2.1 Principles of Network Applications.md",
-    "2024-09-27.md",
-    "Chapter2/Chapter2 Introduction.md",
-    "Chapter1/Chapter1 Introduction.md",
+    "README.md",
     "Chapter1/Chapter1.7  History of Computer Networking and the Internet.md",
     "Chapter1/Chapter1.6 Networks Under Attack.md",
-    "Chapter1/Chapter1.4 Delay, Loss, and Throughput in Packet-Switched Networks.md",
     "Chapter1/Chapter1.5 Protocol Layers and Their Service Models.md",
-    "Chapter1/Chapter1.2 The Network Edge.md",
-    "Chapter1/Chapter1.3 The Network Core.md",
-    "README.md",
-    "Pasted image 20240925233407.png",
+    "Chapter1/Chapter1.4 Delay, Loss, and Throughput in Packet-Switched Networks.md",
     "Chapter1/Chapter1.1 What Is the Internet.md",
+    "Chapter1/Chapter1 Introduction.md",
+    "무제 파일.canvas",
+    "2024-09-27.md",
+    "Chapter2/Chapter2 Introduction.md",
+    "Pasted image 20240925233407.png",
     "Chapter1/Images/Pasted image 20240924130428.png",
     "Chapter1/Images/Pasted image 20240924152003.png",
     "Chapter1/Images/Pasted image 20240924143810.png",

@@ -1,5 +1,8 @@
 {
   "textFontFamily": "나눔스퀘어_ac",
   "cssTheme": "Blue Topaz",
-  "theme": "moonstone"
+  "theme": "moonstone",
+  "interfaceFontFamily": "나눔스퀘어_ac",
+  "monospaceFontFamily": "나눔스퀘어_ac",
+  "baseFontSize": 17
 }
