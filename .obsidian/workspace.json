@@ -153,18 +153,16 @@
       "daily-notes:오늘의 데일리 노트 열기": false,
       "templates:템플릿 삽입": false,
       "command-palette:명령어 팔레트 열기": false,
-      "obsidian-git:Open Git source control": false,
-      "markdown-importer:마크다운 형식 가져오기 열기": false,
-      "obsidian-kanban:새 보드 만들기": false
+      "obsidian-git:Open Git source control": false
     }
   },
   "active": "fb33714523f10f97",
   "lastOpenFiles": [
     "README.md",
     "이름 없는 보드 1.md",
-    "훌라훌라.md",
     "이름 없는 보드.md",
     "Chapter2/Chapter2.1 Principles of Network Applications.md",
+    "훌라훌라.md",
     "무제 파일.canvas",
     "Chapter1/Chapter1.3 The Network Core.md",
     "Chapter1/Chapter1.2 The Network Edge.md",
