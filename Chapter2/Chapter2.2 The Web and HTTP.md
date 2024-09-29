@@ -56,4 +56,10 @@
 	- 💡 persistent connection이 default
 
 ### HTTP with Non-Persistent Connections
-- 페이지가 1개의 base HTML file과 10개의 JPEG 이미지로 이루어져 있다고 가정하면
+- settings
+	- 페이지가 1개의 base HTML file과 10개의 JPEG 이미지로 이루어져 있다고 가정
+	- 11개의 objects들은 동일 server 내에 저장되어 있음
+	- HTML base file의 URL : `http://www.lgsports.team/lgtwins/koreanseries.index`
+
+- step by step
+	(1) HTTP client가 `www.lgsports.team` 서버와 TCP connection을 생성
