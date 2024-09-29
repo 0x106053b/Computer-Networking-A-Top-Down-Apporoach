@@ -126,6 +126,70 @@
 
 
 ## 2.1.4 Transport Services Provided by the Internet
+- 인터넷은 trasnport layer protocol로서 UDP와 TCP를 지원함
+- 개발자로서 새로운 network application을 만들 때 가장 먼저 고려해야 하는 것
+
+### TCP Services
+- TCP는 connection-oriented service와 reliable data transfer service를 제공
+
+#### Connection-oriented service
+(1) TCP는 application-level의 message가 송수신되기 전, client와 server가 transport-layer control information을 교환하게끔 함 ( = handshaking procedure)
+	- handshaking procedure은 패킷이 본격적으로 송수신되기 전에 client와 server가 준비하는 단계
+
+(2) handshaking 후, 두 process의 socket 사이에 TCP connection이 생성됨
+	- 생성되는 TCP connection은 full-duplex connection
+
+>[!question] full-duplex connection vs half-duplex connection
+>![](https://i.imgur.com/C0d2qwg.png)
+>**full-duplex connection (전이중 연결)**
+>두 대의 end system이 데이터 송수신을 위해 동시에 각각의 독립된 회선을 사용. 동시 송수신 가능
+>**half-duplex conneciton (반이중 연결)**
+>한 쪽이 송신하는 동안 다른 쪽이 수신하는 연결 방식. 전송 방향을 교체하며 통신을 교환
+
+(3) application이 message 전송을 종료하면, connection이 종료됨
+
+#### Reliable Data Transfer Service
+- communication process는 모든 데이터가 오류없이 바른 순서로 전달되도록 하는 TCP에 의존
+	- `TCP to deliver the same stream of bytes to the receiving socket, with no missing or duplicate bytes.`
+
+#### (+) Congestion-Control System
+- sender와 server 사이의 네트워크가 혼잡한 경우, TCP는 sender의 프로세스를 통제
+
+### UDP Services
+- UDP는 TCP와 다르게 최소한의 기능만을 제공하는 transport-layer protocol
+- UDP는 connectionless임 → TCP와 다르게 handshaking 생략
+- unreliable data transfer service
+	→ UDP socket을 통새 전송된 데이터가 receiving process에 도달할 것이라고 보장할 수 X
+	→ receiving process에 순서대로 도달할 것이라고 보장할 수 X
+- congestion-control mechanism X
+
+### Services Not Provided by Internet Transport Protocols
+- TCP는 reliable data transfer를 제공하며, application layer로 하여금 SSL로 security service 제공하도록 할 수 있음
+- ==그러나 TCP, UDP service ( = 즉, 오늘날의 transport protocols) 는 throughput, timing guarantee 서비스를 제공하지 않음==
+- 즉, 오늘날의 time-sensitive apps는 이러한 transport protocol차원의 보장 없이도 작동할 수 있도록 디자인되었음
+
+>[!info] Transport Protocols Used by Popular Internet Applications
+>![](https://i.imgur.com/5JOphPN.png)
+e-mail, remote terminal access, the Web, and file transfer는 reliable data transfer를 위해 TCP를 사용함. 그러나 Skype와 같은 인터넷 전화 서비스는 일정 수준 이하의 loss는 용인하기 때문에 UDP를 채택함. 그러나 최근 많은 방화벽 프로그램들이 UDP traffic을 막기 시작하면서 많은 인터넷 전화 서비스들은 UDP의 대안으로 TCP 기반 프로그램을 개발해두었음
+
+
+<hr>
+
+
+## 2.1.5 Application-Layer Protocols
+- application-layer protocol은 process가 다양한 end system위에서 작동하는 방식과, 어떻게 서로 message를 주고받을 수 있는지를 정의함
+
+>[!nfo] What application protocol defines in detail :
+>- 교환되는 message의 형식 (request/response messages의 형식 등)
+>- 다양한 타입의 message 작성 문법(syntax)
+>- 각각의 message field가 가지는 의미
+>- 언제 process가 message를 송신하고, message에 응답하는지 (about timing)
+
+- network application과 application-layer을 구분해야 함
+
+
+
+
 
 
 
