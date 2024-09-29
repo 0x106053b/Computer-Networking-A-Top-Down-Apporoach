@@ -1,4 +1,10 @@
-# Computer-Networking-A-Top-Down-Apporoach (7th Edition)
+# Computer-Networking-A-Top-Down-Apporoach
+#### 7th Edition, written by Jim Kurose, Keith Ross
+
+## Additional Resources
+- [Authors' Website](https://gaia.cs.umass.edu/kurose_ross/index.php)
+- [Interactive End of Chapter Problems](https://gaia.cs.umass.edu/kurose_ross/interactive/)
+- [Knowledge Checks](https://gaia.cs.umass.edu/kurose_ross/knowledgechecks/)
 
 ## Chapter 1
 - [Chapter1.1 What Is the Internet](Chapter1.1%20What%20Is%20the%20Internet.md)
