@@ -138,12 +138,11 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -156,7 +155,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "19d17887cf2c7b63",
+  "active": "351fa5915efcd9b9",
   "lastOpenFiles": [
     "Chapter2/Chapter2.2 The Web and HTTP.md",
     "Chapter2/Chapter2.1 Principles of Network Applications.md",

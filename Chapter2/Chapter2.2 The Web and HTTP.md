@@ -156,6 +156,61 @@
 >[!info] form에서 POST가 아닌 GET이 사용될 수 있다?
 >HTML form은 종종 GET method를 사용하며, form을 통해 입력된 데이터를 requested URL에 삽입하여 사용한다. 가령, GET method를 사용하는 form에 'bokyung', 'hyunsoo' 필드를 입력하여 제출하였다면, URL은 `www.lgtwins.team/playersearch?bokyung&hyunsoo` 의 구조를 가진다.
 
+- HEAD method는 GET 과 유사함. server가 HEAD request를 수신하면 HTTP message를 회신하지만 요청받은 object 데이터는 비워진 채로 전송함 → 디버깅을 위한 method
+- PUT은 user가 specific server의 specific path에 object를 upload 할 수 있게 함
+
+>[!question] POST method vs PUT method
+>POST method는 새로운 object를 생성할 때 사용되며, PUT method는 새로운 object를 생성하거나 수정하기 위해 데이터를 전송하는 메서드. POST는 새로운 데이터를 계속 생성하기 때문에 요청시마다 object를 생성하지만, PUT은 사용자가 데이터를 지정하고 생성/수정하는 메서드이므로 동일 요청을 반복하더라도 object가 계속 생성되지는 않음
+
+- DELETE method는 user 혹은 application이 Web server의 object를 삭제할 수 있게 함
+
+### HTTP Response Message
+>[!example] Example
+>`HTTP/1.1 200 OK`
+>`Connection: close`
+>`Date: Tue, 18 Aug 2015 15:44:04 GMT`
+>`Server: Apache/2.2.3 (CentOS)`
+>`Last-Modified: Tue, 18 Aug 2015 15:11:03 GMT`
+>`Content-Length: 6821`
+>`Content-Type: text/html`
+>
+>`(data data data data data ...)`
+- (1) status line, (2) six header lines, and (3) entity body로 구성됨
+
+#### Status Line
+- (1) protocol version field, (2) status code, and (3) corresponding status msg 로 구성됨
+	- 예시의 status line은 HTTP/1.1 version을 통해 응답을 요청하였으며, OK (서버가 요청하는 올바른 object를 저장소에서 발견했으며, 이를 성공적으로 전송함) 라는 의미를 나타냄
+
+>[!info] Status Code
+>- **200 OK** : request에 성공했으며 요청된 정보가 response로 반환됨
+>- **301 Moved Permanently** : 요청된 정보가 영구적으로 이동됨. 새로운 위치 URL은 reponse message의 header의 `Location : ` 에 명시되어 반환됨
+>- **400 Bad Request** : server가 request를 처리할 수 없음
+>- **404 Not Found** : 요청된 document가 이 server에 존재하지 않음
+>- **505 HTTP Version Not Supported** : 요청된 HTTP Protocol이 이 server에서는 지원하지 않음
+
+#### Hedaer Lines
+- `Connection: close` 는 client에게 메세지를 전송한 후 TCP connection을 종료할 것이라는 의미
+	- ❓ 그렇다면 request HTTP에서와 동일하게 non-persistent 연결이라는 뜻?
+
+- `Date: Tue, 18 Aug 2015 15:44:04 GMT` 는 HTTP 응답이 생성되고 전송된 시각
+	- object가 생성되거나 최종적으로 수정된 시각이 아님에 주의!
+
+- `Server: Apache/2.2.3 (CentOS)`는 HTTP Request에서의 `User-agent`와 유사한 기능. 서버의 종류를 나타내는 필드
+- `Last-Modified: Tue, 18 Aug 2015 15:11:03 GMT`는 object가 생성되거나 최종적으로 수정된 시각
+	- 이 필드는 object caching을 위해서 필수적인 내용을 포함
+
+- `Content-Length: 6821`는 전송된 object의 크기를 Bytes 단위로 나타낸 것
+- `Content-Type: text/html`은 entity body의 파일이 어떤 형식을 가지고 있는지를 나타냄
+
+
+<hr>
+
+
+## 2.2.4 User-Server Interaction: Cookies
+
+
+
+
 
 
 
