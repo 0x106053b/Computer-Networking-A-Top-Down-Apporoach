@@ -207,8 +207,66 @@
 
 
 ## 2.2.4 User-Server Interaction: Cookies
+- HTTP server is stateless  → 수천개의 동시 TCP connection 관리를 용이하게 하기 위해
+- 그러나, 종종 users 정보를 식별해야 할 경우가 발생
+	- user의 접근 권한을 제한하기 위해
+	- user identity를 활용한 컨텐츠를 제공하기 위해
+
+- cookie를 활용하여 사이트가 user의 정보/활동을 트래킹 할 수 있게 함
+
+![](https://i.imgur.com/4JzBiuU.png)
+- cookie technology의 4요소
+	- (1) server로부터의 HTTP response message의 cookie header line
+	- (2) HTTP request message의 cookie header line
+	- (3) user's end system에 저장되어 browser에 의해 운용되는 cookie file
+	- (4) Web site (sever)의 back-end database (cookie 정보를 저장)
+
+- cookie technology의 작동 과정
+	- (1) 사용자가 처음 Web site를 방문하면, server는 unique identification number를 생성
+	- (2) server는 생성된 number로 인덱싱된 entry를 server back-end database에 생성
+	- (3) server는 `Set-cookie :` header를 포함한 HTTP response를 응답
+	- (4) client browser가 HTTP response를 수신하면 `Set-cookie:` header를 발견
+	- (5) browser은 그 cookie header를 기반으로 special cookie file에 정보를 추가
+	- (6) 이후 user가 해당 Web site를 브라우징 할 때마다 HTTP request에는 할당받은 `cookie :` 정보가 포함되게 되고, Web site는 이를 확인하여 cookie-specific response를 응답
+		- Cookies can be used to create a ==user sesssion== layer on top of stateless HTTP
 
 
+<hr>
+
+
+## 2.2.5 Web Caching
+### Web Cache ( = Proxy Server)
+- origin Web server을 대신해 client의 HTTP request에 응답하는 network entity
+- Web cache는 저장소를 가지고 최근에 requested된 object의 복사본을 저장소에 저장
+
+![](https://i.imgur.com/1diZBim.png)
+- 유저의 모든 HTTP request가 server로 요청되기 전 Web cache로 전달되도록 설계하였음
+	- Web cache에 requested object의 복사본이 있다면 → 캐싱된 복사본을 응답
+	- Web cache에 requested object의 복사본이 없다면 → 서버로 요청을 토스
+
+>[!info] Web Cache Step-by-Step
+>1. browser가 Web cache와의 TCP connection을 생성하고, Web cache를 향해 필요한 object 요청을 전송함
+>2. Web cache는 요청된 object의 복사본이 저장소에 있는지의 여부를 확인하고, 복사본이 저장되어 있다면 client browser에게 object를 포함한 HTTP response를 전송
+>3. 만약 복사본이 storage에 없다면, Web cache는 origin server와의 TCP connection을 생성하고 server에 HTTP request를 전송
+>4. server는 Web cache로부터의 HTTP request를 수신하여 요청된 object를 Web cache에게 응답
+>5. Web cache가 HTTP response with object를 server로부터 수신하면, Web cache의 local storage에 object의 사본을 저장하고 client에게 HTTP response의 사본을 전송 (이미 존재하고 있었던 browser - Web cache의 TCP connection을 통해)
+
+- 즉, Web cache는 server이면서 동시에 client임
+	- server : browser로부터 HTTP request를 수신하고 경우에 따라 response를 전송
+	- client : server에 HTTP request를 전송하고 server로부터 response를 수신
+
+### Why Web cache?
+- client request에 대한 응답 시간을 크게 감소시킬 수 있음
+	- client-server의 bottleneck bandwidth < client-cache의 bottleneck bandwidth 인 경우
+	- client-cache의 연결 속도가 빠르고, client가 요청한 정보를 cache가 보유하고 있는 경우 그 응답 속도는 cache가 없을 때에 비해 매우 빨라질 수 있음
+- Internet을 향한 institution의 access link의 트래픽을 크게 감소시킬 수 있음
+	- 대학, 공공기관 등 institution은 bandwidth를 확장시키지 않아도 됨. 비용 절감!
+- Internet 전반의 트래픽을 크게 감소시킬 수 있음 → 모든 apps의 성능이 향상됨
+
+### Benefits of Caches : example
+![](https://i.imgur.com/4fCYlpG.png)
+
+ 
 
 
 
