@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Chapter2/Chapter2.2 The Web and HTTP.md",
+                "file": "Chapter1/Chapter1.5 Protocol Layers and Their Service Models.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Chapter2/Chapter2.2 The Web and HTTP.md",
+                "file": "Chapter1/Chapter1.5 Protocol Layers and Their Service Models.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Chapter2/Chapter2.2 The Web and HTTP.md",
+                "file": "Chapter1/Chapter1.5 Protocol Layers and Their Service Models.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Chapter2/Chapter2.2 The Web and HTTP.md"
+                "file": "Chapter1/Chapter1.5 Protocol Layers and Their Service Models.md"
               }
             }
           },
@@ -142,7 +142,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -155,8 +156,9 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "351fa5915efcd9b9",
+  "active": "19d17887cf2c7b63",
   "lastOpenFiles": [
+    "Chapter1/Chapter1.6 Networks Under Attack.md",
     "Chapter2/Chapter2.2 The Web and HTTP.md",
     "Chapter2/Chapter2.1 Principles of Network Applications.md",
     "Chapter1/Chapter1.5 Protocol Layers and Their Service Models.md",
@@ -168,7 +170,6 @@
     "Chapter1/Chapter1.3 The Network Core.md",
     "Chapter1/Chapter1.2 The Network Edge.md",
     "Chapter1/Chapter1.7  History of Computer Networking and the Internet.md",
-    "Chapter1/Chapter1.6 Networks Under Attack.md",
     "Chapter1/Chapter1.4 Delay, Loss, and Throughput in Packet-Switched Networks.md",
     "Chapter1/Chapter1.1 What Is the Internet.md",
     "Chapter1/Chapter1 Introduction.md",
