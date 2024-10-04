@@ -264,14 +264,106 @@
 - Internet 전반의 트래픽을 크게 감소시킬 수 있음 → 모든 apps의 성능이 향상됨
 
 ### Benefits of Caches : example
+#### Without Cache
 ![](https://i.imgur.com/4fCYlpG.png)
+- Settings
+	- instituational network은 high-speed LAN으로 구성
+	- institutional network와 public internet의 router은 15Mbps link로 연결됨
+	- average object size는 1Mbits
+	- institution's browser로부터의 요청은 평균적으로 초당 15건
+	- HTTP request자체는 link에 유의미한 traffic을 발생시키지 않음
+	- institution's browser가 request를 전송하고 응답을 받을 때까지 걸리는 시간 2초
+		- 💡 이 때의 delay를 'Internet Delay' 라고 함
 
- 
+>[!info] 총 응답 지연
+>총 응답 지연 = LAN delay + Access Delay + Internet Delay
+
+- Traffic intensity of LAN
+	- ( (15 requests / 초) x 1Mbits ) / 100Mbps = 0.15
+	- 무시할 수 있을 정도로 작은 수준의 traffic intensity
+
+- Traffic intensity of access link
+	- ((15 requests / 초) x 1Mbits) / 15Mps = 1
+	- Traffic intensity가 1에 가깝다는 것은 회선의 지연이 무한히 커질 수 있음을 의미함
+
+- access link의 traffic intensity를 완화하기 위해 rate를 증가시킬 수도 있지만 큰 비용이 소모됨
+
+#### With Cache
+![](https://i.imgur.com/n00UZz6.png)
+- Settings
+	- without cache example의 설정에서, 추가적으로 institutional network에 cache를 추가
+	- Hit rates : 0.4
+		- 💡 실제로 Hit rates는 0.2 ~ 0.7 수준임
+		- 40%의 request는 cache로부터 응답이 이루어짐 (10ms 이내)
+		- 60%의 requeset는 original server로부터 응답이 이루어짐
+
+>[!info] traffic intensity of access link
+**(hit rate x intensity of LAN) + ((1-hit rate) x intensity of access link without cache)**
+= (0.4 x 0.15) + (0.6 x 1) = 0.66
+→ cache가 없을 때에 비하여 traffic intensity 감소
+
+- average delay
+	- 0.4 x average delay with cache hit + 0.6 x average delay without cache hit
+	- = (0.4 x 10ms) + (0.6 x (2s + 10ms)) = 1.2s
+		- ❓ 2s + 10ms : 10ms 동안 cache와 통신 + 2s동안 original server와 통신
+
+- cache가 없을 때의 average delay는 2s. cache가 있을 때는 1.2s로 크게 감소하였음
+
+### CDN (Content Distribution Networks)
+- CDN는 인터넷 전역에 지역적으로 분산화된 cache를 보유하고 있으며, traffic을 localizing함
+- 즉, 전 세계에 분산된 캐시 서버 네트워크를 설치하여 user에게 빠르고 효율적으로 콘텐츠를 전달
+
+### The Conditional GET
+- caching된 이후로 original server상의 object가 수정되었을 수 있으므로 cahce된 objeect는 가장 최신의 데이터가 아닐 수 있음
+- HTTP는 caching된 데이터가 가장 최신의 것인지 확인할 수 있도록 Conditional GET를 제공함
+- (1) `GET` method를 사용 (2) `If-Modified-Since: ` 헤더를 포함하고 있다면 Conditional GET
+
+### How Conditional GET Works
+1. browser는 cache에 request를 보내고, cache에 요청된 object가 없다면 cache는 original server에 아래와 같은 request를 전송
+
+>[!example]
+>`GET /fruit/kiwi.gif HTTP/1.1`
+`Host: www.exotiquecuisine.com`
+
+2. server는 아래와 같이 object를 포함한 response를 cache에 전송.
+	- Last-Modified 헤더를 포함하여 cache에 전송함 (conditional GET을 위해)
+	- cache는 전달받은 object entity와 헤더 정보를 locally 저장
+
+>[!example]
+>`HTTP/1.1 200 OK`
+>`Date: Sat, 3 Oct 2015 15:39:29`
+>`Server: Apache/1.3.0 (Unix)`
+>`Last-Modified: Wed, 9 Sep 2015 09:23:24`
+>`Content-Type: image/gif`
+>`(data data data data data ...)`
+
+3. 몇 주 뒤, browser가 동일 object를 cache에 요청. cache에는 해당 object가 이미 저장되어 있으나, original server에서 object가 수정되었을 수 있으므로 cache는 conditional GET을 통해 object의 수정 여부를 점검
+	- `If-modified-since` 헤더는 이전에 cache가 server로부터 수신한 response의 `Last-Modified`와 동일함. 이 헤더를 통해 server는 object의 `Last-Modified`가 `if-modified-since`값보다 큰 경우 (caching 이후 오브젝트가 수정된 경우) 새로운 버전의 object를 cache에게 전달
+
+>[!example]
+>`GET /fruit/kiwi.gif`
+>`HTTP/1.1 Host: www.exotiquecuisine.com`
+>`If-modified-since: Wed, 9 Sep 2015 09:23:24`
+
+4. 만약 cache request의 `if-modified-since`와 server object의 `Last-Modified` 값이 동일한 경우, server는 아래와 같은 response를 cache에 전송함
+	- 이는 caching된 이후로 object가 수정되지 않았음을 의미하므로 server는 빠른 송수신을 위해 object entity 란을 비워서 HTTP response를 전송함
+	- response status line : `304 Not Modified`
+
+>[!example]
+>`HTTP/1.1 304 Not Modified`
+>`Date: Sat, 10 Oct 2015 15:39:29`
+>`Server: Apache/1.3.0 (Unix)` 
+>`(empty entity body)`
 
 
+<hr>
 
 
+## 2.2.6 HTTP/2
+- HTTP/2의 주요 목표는
+	- single TCP connection에 multiplexing을 구현하여 응답 속도를 줄이는 것
+	- request prioritization & server push 구현
+	- 효율적인 HTTP header compression
+	- 💡 HTTP/2는 server-client 간의 데이터 송수신 방식
 
-`
-`
 
