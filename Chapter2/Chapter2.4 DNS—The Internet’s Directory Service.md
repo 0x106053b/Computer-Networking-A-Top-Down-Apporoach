@@ -58,7 +58,80 @@
 
 
 ## 2.4.2 Overview of How DNS Works
+- user의 host에서 작동중인 application이 hostname을 IP address로 번역하는 상황을 가정
+	1. application은 client side DNS를 키고, IP address로 번역하고자 하는 hostname을 확정
+	2. client side DNS는 주어진 hostname을 가지고 DNS server에 질의를 보냄
+		💡 모든 DNS 질의와 응답은 port 53번의 UDP datagram을 통해 이루어짐
+	3. delay후, user의 host는 보냈던 요청에 대응하는 IP address 매핑값을 수신함
+	4. 이 매핑값(IP address)은 요청한 application으로 전달됨
+		💡 application의 관점에서는, DNS는 간단한 translation service를 제공하는 black box
 
+- DNS를 단순하게 설계한다면, 모든 매핑값을 저장하고 있는 단일한 DNS server를 두는 방식을 고안할 수 있음 (centralized 방식). client는 간단하게 모든 질의를 단일 DNS server로 보내고, DNS server는 곧바로 질의에 대해 응답
+- 그러나 단일 DNS server architecture은 아래와 같은 문제를 가짐
+	- A single point of failure : 단일 DNS 서버가 고장나면, 모든 인터넷 host는 DNS 서비스를 이용할 수 없게 됨
+	- Traffic volume : 단일 DNS 서버는 수백만 호스트로부터의 요청을 처리할 수 없음
+	- Distant centralized database : DNS 서버가 한개라면 필연적으로 어떤 host로부터는 매우 멀어질 수 밖에 없음. 이는 매우 긴 delay를 초래함
+	- Maintenance : 단일 DNS 서버는 모든 Internet host에 대한 정보를 저장할 수 없음. 데이터가 매우 많을뿐더러, 새로운 모든 host에 대한 업데이트를 계속 해주어야 함
 
+### A Distributed, Hierarchical Database
+- DNS는 계층적으로 짜여진 distributed servers로 구성되어 있음
+- hostname - IP address 매핑 정보는 여러 데이터베이스에 분산되어 저장됨
+- DNS server는 3개의 클래스로 구분됨
+	- (1) root DNS servers,
+	- (2) top-level domain (TLD) DNS servers
+	- (3) authoritative DNS servers
 
+#### Root DNS Servers
+- 전 세계적으로 1000개 이상의 root server가 흩어져 위치하고 있음
+- TLD server의 IP address를 제공하는 기능
 
+#### TLD DNS Servers
+- `.com`, `.org`, `.net`, `.edu` 와 같은 top-level domain과 `uk`, `fr`, `ko`와 같은 국가 단위 도메인은 TLD DNS server를 가짐
+- authoritive DNS server의 IP address를 제공하는 기능
+
+#### Authoritive DNS Server
+- 인터넷을 통해 접속가능한 모든 organization은 host와 IP address를 매핑하는 접근가능한 DNS records를 가짐
+- organization은 authoritive DNS server의 구현 방식을 선택할 수 있음
+- organizatino 관리자는 DNS records가 authoritive DNS server에 저장될 수 있도록 service provider에게 일정 금액을 지불해야 함
+
+![](https://i.imgur.com/BRTqN4N.png)
+
+- DNS client가 hostname에 대응하는 IP address를 찾는 과정 (`www.amazon.com`)
+	- (1) client는 root DNS server중 하나에 접촉함. 이 때 root DNS server는 top-level domain `.com` 에 대응하는 TLD DNS server의 IP address를 반환함
+	- (2) client는 (1)에서 받은 TLD DNS server의 IP address에 접촉함. 이 때 TLD(.com) DNS server는 authoritive server `amazon.com`에 대응하는 DNS server의 IP address를 반환함
+	- (3) client는 (2)에서 받은 authoritive server의 IP address에 접촉하여, `www.amazon.com` hostname에 매핑된 IP address를 반환받음
+
+#### Local DNS Server
+- DNS hierarchy에는 속하지 않지만 DNS architecture의 핵심적인 기능을 함
+- ISP는 local DNS server를 가지며, host가 ISP에 연결되면, ISP는 한개 이상의 local DNS server의 IP address를 host에게 제공함
+- host의 Local DNS는 host와 가까이 위치해 있어 delay ↓ 
+	(예) institutional ISP의 경우 local DNS server는 host와 동일한 LAN으로 연결됨
+	(예) residential ISP의 경우local DNS server는 적은 수의 router hop 이내로 host와 연결됨
+
+- host가 DNS 질의를 생성하면, 해당 질의는 local DNS server로 보내져 proxy의 기능을 함
+
+#### How Local DNS Server Works
+![](https://i.imgur.com/to34b6B.png)
+- Settings
+	- host `cse.nyu.edu` 가 `gaia.cs.umass.edu`의 IP address를 얻으려고 함
+	- host `cse.nyu.edu`의 local DNS server는 `dns.nyu.edu`
+	- host `gaia.cs.umass.edu`의 authoritive DNS server는 `dns.umass.edu`
+
+1. `cse.nyu.edu`가 local DNS server인 `dns.nyu.edu`에 DNS 질의를 보냄. 이 때, 질의는 번역하고자 하는 hostname `gaia.cs.umass.edu`를 포함하고 있음
+2. local DNS server는 root DNS server에 질의를 포워딩함
+3. root DNS server는 `.edu` suffix를 확인하고, local DNS server에게 `.edu` 도메인을 관리하는 TLD DNS server의 IP address 묶음을 전달
+4. local DNS server는 수신한 IP address 묶음을 사용하여 `.edu` TLD DNS server에 질의를 전송
+5. `.edu` TLD DNS server는 `umass.edu` suffix를 확인하고 ` dns.umass.edu` authoritive DNS server의 IP address 를 local DNS server에 전달함
+6. Local DNS server는 동일한 DNS 질의를 `dns.umass.edu` 에 전송함
+7. `dns.umass.edu` authoritive server는 `gaia.cs.umass.edu`에 대응하는 IP address를 local DNS server에 전송함
+8. Local DNS server는 `gaia.cs.umass.edu`로의 IP address를 host에게 반환
+
+- 위 Local DNS server 예시에 DNS caching이 추가되면 query traffic을 줄일 수 있음
+- 또한, 위 예시의 TLD server는 Authoritive DNS server의 hostname을 알고 있음을 전제함. 그러나 만약, TLD server가 Authoritive DNS server를 모르는 대신 그 intermediate server의 IP address만을 알고 있다면, 2번의 질의+응답 과정이 추가되어 총 10번의 질의+응답을 거치게 됨
+- recursive queries : `cse.nyu.edu`에서 `dns.nyu.edu`로 보내진 질의로 인해 `dns.nyu.edu` host가 다른 DNS server들과 질의를 교환하면서 mapping값을 탐색하므로
+- iterative queries : `dns.nyu.edu`로부터의 질의가 다른 DNS server를 거쳐 response로 돌아오는 흐름이 여러번 반복되므로
+
+### DNS Caching
+- query chain에서 DNS server가 다른 server로부터 DNS reply를 수신하면, 매핑값을 서버의 local memory에 저장
+- DNS는 delay performance 성능을 향상시키고, 인터넷 상을 떠도는 DNS message의 수를 줄이기 위해 DNS caching 을 사용
+- 이후 caching된 mapping에 대한 질의가 도착한다면, 해당 server가 authoritive server가 아
