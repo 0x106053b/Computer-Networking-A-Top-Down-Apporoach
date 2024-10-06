@@ -364,6 +364,61 @@
 	- single TCP connection에 multiplexing을 구현하여 응답 속도를 줄이는 것
 	- request prioritization & server push 구현
 	- 효율적인 HTTP header compression
-	- 💡 HTTP/2는 server-client 간의 데이터 송수신 방식
+	- 💡 HTTP/2는 server-client 간의 데이터 송수신 방식을 변화시키는 데에 초점을 둠
+
+>[!example] Server Push
+>When a client requests a webpage, the server not only sends the requested HTML file but also **sends other resources it anticipates the client will need**, such as CSS and JavaScript files. This is done in a single connection, reducing the round-trip time significantly.
+
+### Head of Line (HoL) Blocking Problem
+- HTTP/1.1는 persistent TCP connection을 사용
+	- server가 client에게 단일 TCP connection을 사용하여 데이터를 전송
+	- 각 transported Web page는 공평하게 네트워크 대역폭을 할당받음
+
+- HTML page 상단에 용량이 큰 비디오가 위치해있고, 그 아래 여러 small object가 있는 상황을 가정
+	- 용량이 큰 video object가 bottleneck link를 지나는 데에 긴 시간이 소요되는 동안, 나머지 small object는 그 큰 object가 전송이 완료될 때까지 대기해야만 함
+	- HTTP/1.1에서는 이러한 HoL problem을 여러개의 병렬적인 TCP connection을 연결함으로써 해결함
+
+### TCP Congestion Control
+- TCP congestion control은 각 TCP connection에 동일한 bandwidth를 할당하는 것을 목표함
+- 즉, n개의 TCP connection이 있다면 각 connection은 link 전체 대역폭의 1/n을 사용
+- HTTP/1.1 browser
+	- ❓ 최대 6개의 병렬적인 TCP connection을 열어 HOL을 방지하고 더 넓은 대역폭을 할당받음
+- HTTP/2 browser
+	- single Web Page에서 여러개의 병렬적인 TCP connection을 연결하지 않음으로써 사용되는 socket의 개수를 줄임
+	- single TCP connection으로 HOL blocking problem을 방지하는 구조를 채택
+
+### HTTP/2 Framing
+- HOL blocking 구현
+	- (1) 각 message를 작은 frame으로 쪼개기
+	- (2) 동일 TCP connection내에 request/response interleaving
+	- (3) 수신받은 데이터를 재조립
+
+>[!question] Frame Interleaving
+>server가 전송해야 하는 object가 1000frames의 video clip 1개, 2frames의 small objects 8개로 이루어져 있다면, frame interleaving을 통해 video clip의 frame 1개를 전송한 후 이어서 small object의 첫번째 frame이 각각 하나씩 전송된다. 같은 방식으로 video clip의 2번째 frame이 전송되면, small objects릐 두번째 frame이 각각 하나씩 전송되고, small objects의 데이터 전송은 이 단계에서 완료된다.
+>interleaving을 통해 small objects의 frame들은 18번째 frames번에 전송이 완료되었다. 만약 interleaving을 적용하지 않았다면, 1000 + 16 = 1016번째 frames만에 small objects의 frame 전송이 완료되었을 것이다.
+>**→ The HTTP/2 framing mechanism can significantly decrease user-perceived delay.**
+
+- server가 HTTP response를 전송하고자 할 때, response는 framing-sub layer에서 쪼개짐
+	- header field는 하나의 frame으로 쪼개짐
+	- body of the message는 여러개의 frame으로 쪼개짐
+	- 쪼개진 frames들은 **single persistent TCP connection**을 통해 전송
+
+### Response Message Prioritization and Server Pushing
+### Message Prioiritization
+- application 성능 최적화를 위해 request에 상대적인 우선순위 부여
+- client가 server에 요청을 보낼 때 1-256 range의 priority를 매겨 보낼 수 있음
+- server는 동시에 수신된 요청들 중 가장 우선순위가 높은 요청을 먼저 처리함
+- client는 각 message의 dependency를 선언하기 위해 message에 ID를 지정하여 나타낼 수 있음
+
+#### Server Pushing
+
+
+
+
+
+
+
+
+
 
 
