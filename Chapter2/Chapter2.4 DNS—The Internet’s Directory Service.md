@@ -180,6 +180,71 @@
 >
 
 ### DNS Messages
+- DNS message는 DNS 질의(query)와 응답(reply)만으로 이루어짐
+- 질의와 응답은 동일한 format을 가짐
+
+![](https://i.imgur.com/qsSfFkk.png)
+- 첫번째 12Bytes : header section
+	- 첫번째 필드는 질의를 식별하는 번호를 포함함. 이 query의 identifier는 reply의 identifier 필드에 동일하게 복사되어, 이후 client가 응답을 수신했을 때 어떤 query에 대한 응답인지 식별할 수 있도록 함
+	- flag 필드에는 여러개의 flag가 있음
+		- 1bit의 query(0)/reply(1) flag, 
+		- DNS server가 queried host name에 대해 authoritive인지를 나타내는 1bit flag
+		- client가 DNS server로 하여금 RR를 가지고 있지 않은 경우 recursion을 하길 원하는지를 나타내는 1bit flag
+		- DNS server가 recursion을 지원하는지를 나타내는 1bit flag
+	- 나머지 4개의 필드는 header section 뒤에 따라오는 data section의 number of occurences를 나타냄
+
+- ==**question section은 query에 대한 정보를 포함함**==
+	- 질의하고자 하는 name
+	- name에 대해 질의하고자 하는 질문의 type
+		(예) hostname과 매핑된 IP address를 질의하는 경우 Type A
+
+- ==**answer section은 질의된 name에 대응하는 DNS server로부터의 RR 응답을 포함함**==
+	- RR은 Type, Value, TTL을 포함하고 있는 튜플
+	- DNS server은 여러개의 RR을 응답할 수 있음
+		❓ 하나의 hostname이 여러개의 IP address를 가질 수 있으므로
+
+- authority section은 다른 authoritive server의 정보를 포함함
+- additional section은 다른 유용한 정보를 포함함
+	- answer field가 MX 질의에 대한 응답으로 mail server의 canonical hostname을 포함한 RR을 반환하고 있다면, additional section은 mails server의 canonical hostname에 대한 Type A record -  canonical hostname의 IP address를 포함
+
+### Inserting Records into the DNS Database
+#### DNS registrar
+- domain name의 유일성을 인증해주는 유료 기관
+- domain name을 DNS database에 저장하고, 서비스 제공 비용을 받음
+- 이전에는 단일 DNS registrar이 독점하는 형태였지만, 현재는 많은 DNS registrar이 경쟁하며 운영중이고, Internet Coporation for Assigned Names and Numbers (ICANN)이 DNS registrar 의 기관 등록을 승인함
+- domain name을 DNS registrar에 등록할 때, primary and secondary authoritive DNS server의 hostname과 IP address를 제공해야 함
+	- **==registrar은 위 정보를 받아 아래 두 레코드를 TLD DNS server 에 저장**==
+		- ==**`(networkutopia.com, dns1.networkutopia.com, NS)`**==
+		- ==**`(dns1.networkutopia.com, 212.212.212.1, A)`==**
+
+- Web server에 대한 Type A record와 Mail server에 대한 Type MX record가 저장되게 하여 서버로의 이메일 전송이 가능하게 할 수 있음
+
+>[!Example]
+>Suppose Alice in Australia wants to view the Web page www.networkutopia.com. As discussed earlier, her host will first send a DNS query to her local DNS server. The local DNS server will then contact a TLD com server. (The local DNS server will also have to contact a root DNS server if the address of a TLD com server is not cached.) This TLD server contains the Type NS and Type A resource records listed above, because the registrar had these resource records inserted into all of the TLD com servers. The TLD com server sends a reply to Alice’s local DNS server, with the reply containing the two resource records. The local DNS server then sends a DNS query to 212.212.212.1, asking for the Type A record corresponding to www.networkutopia.com. This record provides the IP address of the desired Web server, say, 212.212.71.4, which the local DNS server passes back to Alice’s host. Alice’s browser can now initiate a TCP connection to the host 212.212.71.4 and send an HTTP request over the connection. Whew! There’s a lot more going on than what meets the eye when one surfs the Web!
+
+
+<hr>
+
+
+## 2.4.4 DNS Security
+### DDos Attacks
+- root DNS server에 traffic을 동시에 많이 발생시켜 서버 과부화 만들기
+- traffic filtering이 발생하는 경우 DDos 공격 무력화
+- local DNS server가 TLD server를 캐싱한다면, Root DNS server로의 접근을 우회하므로 DDos 공격 무력화
+
+### Redirect Attacks
+- DNS query를 질의 중간에 가로채어 잘못된 사이트로 redirect되도록 거짓 reply 전송
+- DNS server로 위조된 reply를 보내어 잘못된 RR이 DNS server에 캐싱되도록 함
+
+### Exploit DNS for DDos
+- 출발된 IP 주소를 조작하여 DNS 질의에 대한 응답이 조작된 IP주소로 전송되도록 함
+- DNS 패킷에는 인증 절차가 필요 없으므로 가능
+
+
+
+
+
+
 
 
 
