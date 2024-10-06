@@ -45,5 +45,20 @@
 - 💡 MX record는 기업의 mail server와 Web server가 동일한 aliased hostname을 가질 수 있도록 함
 
 #### Load Distribution
-- DNS는 복제된(replicated) 서버들이 부하를 분산시키
+- DNS는 복제된(replicated) 서버들의 부하를 분산시키기 위해서도 사용됨
+- 붐비는 웹 사이트들은 repliacted multiple server를 두고 있는데, 각 서버는 다른 시스템 위에서 작동하며 따라서 다른 IP address를 가짐
+- 이 replicated web server들의 ip address들은 하나의 alias hostname으로 묶임
+	- 각각의 replicated web server들은 각자의 canonical hostname을 가짐
+- client가 DNS server에 DNS 질의를 보내면 DNS server는 set of IP address를 기반으로 응답을 보내게 되는데, **==이 때의 set of IP address는 각 요청마다 순환식으로 전달됨==**
+	- client가 여러개의 IP주소 묶음을 응답으로 받았을 때 client는 그 묶음 중 첫번째 IP address로 HTTP request를 보내기 떄문에, 서버 부하를 분산시키는 효과를 내기 위해서는 DNS server가 IP address 묶음의 첫번째 IP address를 돌려돌려 돌림판으로 보내주어야 함
+- DNS rotation은 e-mail에서도 사용될 수 있어서, 여러개의 메일 서버가 하나의 alias name을 공유할 수 있음
+
+
+<hr>
+
+
+## 2.4.2 Overview of How DNS Works
+
+
+
 
