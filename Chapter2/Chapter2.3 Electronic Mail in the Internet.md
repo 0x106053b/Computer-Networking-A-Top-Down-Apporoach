@@ -52,25 +52,65 @@
 >- server로 보내야 하는 메세지가 여러개인 경우, ==**동일한 TCP connection 상에서 위의 절차를 반복하며 메일을 전송(persistent connection)**== 함. 만약 더 이상 보낼 메세지가 없다면 TCP connection을 종료시킴
 
 ### Messages Exchanged between Client & Server
->[!example]
->`S:  220 hamburger.edu`
->`C:  HELO crepes.fr`
->`S:  250 Hello crepes.fr, pleased to meet you`
->`C:  MAIL FROM: <alice@crepes.fr>`
->`S:  250 alice@crepes.fr ... Sender ok`
->`C:  RCPT TO: < bob@hamburger.edu>`
->`S:  250 bob@hamburger.edu ... Recipient ok`
->`C:  DATA`
->`S:  354 Enter mail, end with ”.” on a line by itself`
->`C:  Do you like ketchup?`
->`C:  How about pickles?`
->`C:  .`
->`S:  250 Message accepted for delivery`
->`C:  QUIT`
->`S:  221 hamburger.edu closing connection`
-
+![](https://i.imgur.com/vMeu2K9.png)
 - Settings
 	- client의 hostname : `crepes.fr`
 	- server의 hostname : `hamburger.edu`
+
+- client는 server에게 `"Do youlike ketchup? How about pickles?"` 라는 메세지를 전송
+- 메세지 마지막에 전송한 `"."`은 전송할 메세지의 내용이 완료됨을 의미함
+- server는 client로부터의 command에 대해 reply code와 영문 설명을 덧붙여 응답함
+	(예) `250 Message accepted for delivery`
+
+- SMTP가 persistent connection을 사용한다고 했는데, 여기서 메세지를 더 보내려면 handshaking단계의 `C:  MAIL FROM: <alice@crepes.fr>` 부터 다시 반복하면 됨
+
+>[!info] TelNet
+>`telnet serverName 25`
+>위와 같은 server-client간의 응답을 얻기 위해서는 telnet을 사용할 수 있음. 이 때, serverName은 메일을 송신하고자 하는 local mail server의 이름이어야 함. 이 코드를 입력하면, local host와 mail server사이의 TCP connection이 생성되고, server로부터 220 reply를 수신하게 됨. 이후 HELO, MAIL FROM, RCPT TO, DATA and QUIT과 같은 SMTP command를 사용하여 mail server와 통신할 수 있음. 
+
+
+<hr>
+
+
+## 2.3.2 Mail Message Formats
+>[!example] typical message header
+>`From: alice@crepes.fr`
+>`To: bob@hamburger.edu`
+>`Subject: Searching for the meaning of life.`
+
+- 메세지 본문 앞의 header는 해당 메일에 대한 주변적인 정보를 포함하고 있음
+- header lines와 message 본문은 CRLF 공백 라인으로 구분됨
+- RFC 5322에서는 header lines의 작성 포맷과 그 의미를 정의함
+- header line은 콜론(:) 으로 연결된 키워드와 값을 선언하고 있으며, 어떤 키워드는 필수적으로 header line에 포함되어야 하는 반면 어떤 키워드는 optional함
+	- **==`From`, `To` header line은 필수적으로 작성되어야 함==**
+	- `Subject` header line은 optional
+- ==**이 때의 header lines들은 SMTP command에서의 `FROM`, `TO`와 다른 것임 !!**==
+	- SMTP command에서의 `FROM`, `TO`는 handshaking protocol에서 사용된 명령어이며, header lines에서의 `FROM`, `TO`는 메일 그 자체에 포함되는 내용임
+
+
+<hr>
+
+
+## 2.3.3 Mail Access Protocols
+- 수신인의 mail server가 local host에 내장되어 있다면 수신인의 local host는 항상 켜진 채로 인터넷에 연결되어 메일이 수신되기를 대기해야함
+- 따라서 일반적으로 user agent는 local host에 내장되어 있지만 mailbox에 접속하는 경우에는 always-on shared mail server로 접근해야 함. 이 mail server는 다른 사용자들과 공유됨
+
+![](https://i.imgur.com/qofS01T.png)
+1. 발신인의 user agent는 수신인의 mail server와 직접적으로 소통하지 않고, 발신인의 mail server로 SMTP/HTTP를 통해 메일을 전송
+2. 발신인의 mail server는 SMTP를 통해 (SMTP client) 수신인의 mail server로 메일을 전달
+	❓ 현재 발신인의 user agent는 destination mail server에 메일을 보낼 수 있는 자원 (mail server) 가 없기 때문에 발신인의 mail server을 거쳐 수신인의 mail server로 메일이 보내질 수 있도록 함
+3. 발신인의 mail server에 우선 메일을 전달함으로써, 발신인의 mail server는 수신인의 mail server가 작동할 때까지 주기적으로 메일의 전송을 시도할 수 있음
+
+### IMAP
+- 그렇다면 수신인의 mail server까지 도착한 메일을 user agent를 통해 어떻게 local host로 읽어올 수 있을까?
+- SMTP는 push protocol이지만 현재 local host는 pull operation을 하려는 것이므로 사용할 수 X
+- 만약 수신인이 Web-based e-mail 이나 smartphone app을 사용하고 있다면 user agent는 HTTP protocol을 통해 수신인의 mail server로부터 메일을 꺼내옴
+	- 즉, 이 뜻은 수신인의 mail server가 SMTP와 HTTP protocol interface를 모두 가지고 있어야 함을 의미 (mail 수신을 위한 SMTP, mail을 local agent로 pull 하기 위한 HTTP)
+- HTTP의 대안으로는 Internet Mail Access Protocol (IMAP)이 주로 사용됨
+
+>[!info]
+>- **SMTP** : delivery / stroage to receiver's server
+>- **Mail Access Protocol** : retrieval from server
+
 
 

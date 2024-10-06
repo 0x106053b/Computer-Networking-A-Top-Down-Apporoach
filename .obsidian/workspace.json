@@ -8,31 +8,18 @@
         "type": "tabs",
         "children": [
           {
-            "id": "19d17887cf2c7b63",
+            "id": "1f3938561a262ef4",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Chapter2/Chapter2.2 The Web and HTTP.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "d70bf198e26caa20",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Chapter2/Chapter2.3 Electronic Mail in the Internet.md",
+                "file": "Chapter2/Chapter2.4 DNS—The Internet’s Directory Service.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -98,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Chapter2/Chapter2.3 Electronic Mail in the Internet.md",
+                "file": "Chapter2/Chapter2.4 DNS—The Internet’s Directory Service.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Chapter2/Chapter2.3 Electronic Mail in the Internet.md",
+                "file": "Chapter2/Chapter2.4 DNS—The Internet’s Directory Service.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Chapter2/Chapter2.3 Electronic Mail in the Internet.md"
+                "file": "Chapter2/Chapter2.4 DNS—The Internet’s Directory Service.md"
               }
             }
           },
@@ -166,19 +153,23 @@
       "daily-notes:오늘의 데일리 노트 열기": false,
       "templates:템플릿 삽입": false,
       "command-palette:명령어 팔레트 열기": false,
-      "obsidian-git:Open Git source control": false
+      "obsidian-git:Open Git source control": false,
+      "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "14fc1c2b8e057f4a",
+  "active": "1f3938561a262ef4",
   "lastOpenFiles": [
-    "Chapter2/Chapter2.2 The Web and HTTP.md",
     "Chapter2/Chapter2.3 Electronic Mail in the Internet.md",
+    "Chapter2/Chapter2.2 The Web and HTTP.md",
+    "Chapter2/Chapter2.4 DNS—The Internet’s Directory Service.md",
+    "Excalidraw/Drawing 2024-10-06 17.22.23.excalidraw.md",
+    "README.md",
+    "Excalidraw",
     "Chapter1/Chapter1.4 Delay, Loss, and Throughput in Packet-Switched Networks.md",
     "Chapter1/Chapter1.7  History of Computer Networking and the Internet.md",
     "Chapter1/Chapter1.6 Networks Under Attack.md",
     "Chapter1/Chapter1.5 Protocol Layers and Their Service Models.md",
     "Chapter2/Chapter2.1 Principles of Network Applications.md",
-    "README.md",
     "이름 없는 보드 1.md",
     "이름 없는 보드.md",
     "훌라훌라.md",
