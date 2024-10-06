@@ -134,4 +134,53 @@
 ### DNS Caching
 - query chain에서 DNS server가 다른 server로부터 DNS reply를 수신하면, 매핑값을 서버의 local memory에 저장
 - DNS는 delay performance 성능을 향상시키고, 인터넷 상을 떠도는 DNS message의 수를 줄이기 위해 DNS caching 을 사용
-- 이후 caching된 mapping에 대한 질의가 도착한다면, 해당 server가 authoritive server가 아
+- **==이후 caching된 mapping에 대한 질의가 도착한다면, 해당 server가 authoritive server가 아님에도 매핑값의 IP address를 반환할 수 있음==**
+- hostname - IP address 매핑이 영구적인 것은 아니므로, 일정 기간이 흐르면 DNS server는 캐싱 값을 만료시킴
+- **==TLD server의 IP address로 캐싱 가능. local DNS server가 query chain 상에서 root DNS server에 질의하는 과정을 단축시킴==**
+
+
+<hr>
+
+
+## 2.4.3 DNS Records and Messages
+- DNS distributed database는 resource records(RR)을 저장함
+- DNS server로부터의 응답은 하나 이상의 RR값을 포함함
+
+#### Resource Record
+- `(Name, Value, Type, TTL)`의 4개 필드로 구성된 튜플 형태
+- TTL은 resource record가 살아있을 수 있는 기간, 즉 caching된 RR이 삭제되기까지의 시간
+
+#### Type == A
+- **==`Name`은 hostname을, `Value`는 hostname에 대응하는 IP address를 의미함==**
+- 표준의 hostname-to-IP address 매핑을 제공
+(예) `(relay1.bar.foo.com, 145.37.93.126, A)`
+
+#### Type == NS
+- **==`Name`은 domain을, `Value`는 해당 도메인 내부의 host의 IP address를 얻을 수 있는 authoritive DNS server의 hostname을 의미함==**
+- query chain에서 DNS 서버로 route해야하는 경우 사용
+- (foo.com, dns.foo.com, NS)
+
+#### Type == CNAME
+- **==`Name`은 alias hostname을, `Value`는 alias hostname의 canonical hostname을 의미함==**
+- ==**canonical hostname을 얻기 위해 DNS client는 CNAME record를 질의함**==
+- `(foo.com, relay1.bar.foo.com, CNAME)`
+
+#### Type == MX
+- **==`Value`는 alias hostname `Name`의 canonical name of mail server를 의미함==**
+- mail server의 hostname이 단순한 alias name을 가질 수 있도록 함
+- MX record를 사용함으로써 기업은 기업의 서버(Web server 등)와 mail server에 동일한 aliased name을 사용할 수 있음
+- **==mail server의 canonical name을 얻기 위해 DNS client는 MX record를 질의함==**
+- `(foo.com, mail.bar.foo.com, MX)`
+
+>[!info]
+>DNS server가 **특정 hostname에 대한 책임 서버라면, hostname에 대한 Type A RR을 포함**하고 있을 것이고, (DNS server가 authoritive가 아니더라도 caching 되어있을 수 있음) **책임 서버가 아니라면 해당 hostname에 대한 질의를 이어나가기 위한 다른 DNS server의 DNS hostname을 저장한 Type NS RR와 NS의 value값에 대응하는 IP address를 위한 Type A RR을 모두 포함하고 있을 것!**
+
+>[!example]
+>Suppose an edu TLD server is not authoritative for the host `gaia.cs.umass.edu`. Then this server will contain a record for a domain that includes the host `gaia.cs.umass .edu`, for example, `(umass.edu, dns.umass.edu, NS)`. The edu TLD server would also contain a Type A record, which maps the DNS server dns.umass.edu to an IP address, for example, `(dns.umass.edu, 128.119.40.111, A)`.
+>
+
+### DNS Messages
+
+
+
+
