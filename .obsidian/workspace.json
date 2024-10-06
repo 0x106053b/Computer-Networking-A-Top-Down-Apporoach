@@ -18,8 +18,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "d70bf198e26caa20",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Chapter2/Chapter2.3 Electronic Mail in the Internet.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -85,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Chapter2/Chapter2.2 The Web and HTTP.md",
+                "file": "Chapter2/Chapter2.3 Electronic Mail in the Internet.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Chapter2/Chapter2.2 The Web and HTTP.md",
+                "file": "Chapter2/Chapter2.3 Electronic Mail in the Internet.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Chapter2/Chapter2.2 The Web and HTTP.md"
+                "file": "Chapter2/Chapter2.3 Electronic Mail in the Internet.md"
               }
             }
           },
@@ -156,10 +169,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "19d17887cf2c7b63",
+  "active": "14fc1c2b8e057f4a",
   "lastOpenFiles": [
-    "Chapter1/Chapter1.4 Delay, Loss, and Throughput in Packet-Switched Networks.md",
     "Chapter2/Chapter2.2 The Web and HTTP.md",
+    "Chapter2/Chapter2.3 Electronic Mail in the Internet.md",
+    "Chapter1/Chapter1.4 Delay, Loss, and Throughput in Packet-Switched Networks.md",
     "Chapter1/Chapter1.7  History of Computer Networking and the Internet.md",
     "Chapter1/Chapter1.6 Networks Under Attack.md",
     "Chapter1/Chapter1.5 Protocol Layers and Their Service Models.md",

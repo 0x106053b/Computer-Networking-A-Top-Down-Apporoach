@@ -411,7 +411,17 @@
 - client는 각 message의 dependency를 선언하기 위해 message에 ID를 지정하여 나타낼 수 있음
 
 #### Server Pushing
+- original request에 대한 server의 응답에 추가적으로, server는 client에게 additional response를 보낼 수 있음
+- HTML base page는 Web page를 완전히 렌더링하기 위해 필요한 오브젝트 정보를 모두 포함하고 있기 때문에 가능
+- 즉, HTML page내의 각  object 정보 요청을 client로부터 기다리기보다, server는 그 요청들이 clients들로부터 올 것으로 추측하고 HTML page를 분석하여 page내의 object 정보를 미리 전송함
+	`So instead of waiting for the HTTP requests for these objects, the server can analyze the HTML page, identify the objects that are needed, and send them to the client before receiving explicit requests for these objects.`
 
+- 이 Server Push 기법은 request에 대한 응답에 필요한 latency를 줄여줌
+
+### HTTP/3
+- QUIC은 UDP protocol 베이스의 transport protocol로, application layer 위에서 작동되도록 설계됨
+- HTTP/3은 이 QUIC위에서 작동하도록 설계된 HTTP protocol. 하지만 아직 표준화 되지는 않았음
+- 
 
 
 
