@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Chapter2/Chapter2.1 Principles of Network Applications.md",
+                "file": "Chapter2/Chapter2.5 Peer-to-Peer File Distribution.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Chapter2/Chapter2.1 Principles of Network Applications.md",
+                "file": "Chapter2/Chapter2.5 Peer-to-Peer File Distribution.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Chapter2/Chapter2.1 Principles of Network Applications.md",
+                "file": "Chapter2/Chapter2.5 Peer-to-Peer File Distribution.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Chapter2/Chapter2.1 Principles of Network Applications.md"
+                "file": "Chapter2/Chapter2.5 Peer-to-Peer File Distribution.md"
               }
             }
           },
@@ -159,6 +159,7 @@
   },
   "active": "cd37beccc0269bc1",
   "lastOpenFiles": [
+    "Chapter2/Chapter2.1 Principles of Network Applications.md",
     "Chapter2/Chapter2 Introduction.md",
     "Chapter2/Chapter2.5 Peer-to-Peer File Distribution.md",
     "Chapter2/Chapter2.4 DNS—The Internet’s Directory Service.md",
@@ -171,7 +172,6 @@
     "Chapter1/Chapter1.7  History of Computer Networking and the Internet.md",
     "Chapter1/Chapter1.6 Networks Under Attack.md",
     "Chapter1/Chapter1.5 Protocol Layers and Their Service Models.md",
-    "Chapter2/Chapter2.1 Principles of Network Applications.md",
     "이름 없는 보드 1.md",
     "이름 없는 보드.md",
     "훌라훌라.md",
