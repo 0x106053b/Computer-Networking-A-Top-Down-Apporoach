@@ -94,8 +94,43 @@
 >8. client는 content server와 direct ==**TCP connection**==을 생성하여 HTTP GET request를 보내고 DASH를 통해 데이터를 내려받음
 
 ### Cluster Selection Strategies
+- client를 server cluster 혹은 datacenter와 어떻게 연결할 것인지의 문제
+- CDN이 Local DNS server로부터의 질의를 가로채는 과정에서 Local DNS server의 IP address를 확인하고, CDN은 이 IP address에 기반하여 적절한 CDN cluster를 배정함
+- **geographically closet**
+	- 각 Local DNS server는 지리적인 위치에 매핑되어 있음
+	- Local DNS server로부터의 질의가 들어왔을 때, CDN은 지리적으로 가장 가까운 CDN cluster을 배정함
+	- 그러나 지리적으로 가장 가까운 cluster가 network path의 hop 횟수 측면에서는 가장 가깝지 않을 수 있다는 한계
+	- 일부 end user가 Local DNS server로부터 멀리 떨어져 있을 수도 있음!
+	- internet path의 available bandwidth와 delay 변동을 무시한 strategy
+	- 특정 client에게 항상 동일한 cluster를 배정
+
+- real-time measurements
+	- current traffic condition을 고려한 최적의 cluster를 배정하는 방식
+	- CDNs은 주기적으로 cluster-client간의 delay/loss performance를 측정
+		- cluster가 모든 Local DNS server에 ping message를 보내는 방식으로 구현되나, 대부분의 Local DNS server가 이러한 ping에 응답하지 않도록 설계되어있다는 큰(!) 한계
 
 
+<hr>
+
+
+## 2.6.4 Case Studies: Netflix and YouTube
+### Netflix
+- Netflix video distribution은 Amazon cloud & private CDN infrastructure로 구성
+- Netflix Web Page의 여러 기능들은 Amazon cloud의 server 위에서 작동함
+- Amazon cloud는 아래의 기능들을 제공함 :
+	- **Content ingestion** : 고객들에게 video를 분배하기 전에, 영화의 studio master vesion을 받아서 Amazon cloud의 host에 비디오 파일을 저장
+	- **Content processing** : client의 다양한 video player 종류에 대응할 수 있도록 (TV, game console, ...) 영화의 다양한 format 버전을 제작. ==**여러가지 player format과 bit rates에 따라 DASH를 이용한 HTTP 프로토콜 상에서 전송될 수 있도록 다양한 버전을 제작**==
+	- **Uploading versions to its CDN** : movie의 새로운 versino이 만들어지면 Amazon cloud는 해당 버전을 CDN에 업로드함
+
+#### How does Netflix server works
+1. user가 재생하고자 하는 영화를 선택
+2. Amazon Cloud에서 작동하는 Netflix software는 어떤 CDN server가 영화의 사본을 가지고 있는지를 확인
+3. 영화의 사본을 가지고 있는 CDN servers 중, client request를 처리할 수 있는 최적의 서버 선택
+4. CDN server가 선택되면, Netflix software는 manifest파일과 CDN server의 IP address를 client에게 전달
+5. client와 CDN server는 DASH를 통해 적절한 버전으로 비디오 파일을 송수신
+
+- DNS redirection 과정을 거치지 않고, Netflix software가 직접 통신할 CDN server를 지정해준다는 특징
+- pull caching 대신에 push caching을 사용
 
 
 

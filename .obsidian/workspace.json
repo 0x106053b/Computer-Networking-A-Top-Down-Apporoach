@@ -30,9 +30,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "82a37a47badac88a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Chapter2/Chapter2.7 Socket Programming ; Creating Network Applications.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -98,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Chapter2/Chapter2.6 Video Streaming and Content Distribution Networks.md",
+                "file": "Chapter2/Chapter2.7 Socket Programming ; Creating Network Applications.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Chapter2/Chapter2.6 Video Streaming and Content Distribution Networks.md",
+                "file": "Chapter2/Chapter2.7 Socket Programming ; Creating Network Applications.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Chapter2/Chapter2.6 Video Streaming and Content Distribution Networks.md"
+                "file": "Chapter2/Chapter2.7 Socket Programming ; Creating Network Applications.md"
               }
             }
           },
@@ -170,17 +182,18 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "8bf776a821498e48",
+  "active": "82a37a47badac88a",
   "lastOpenFiles": [
-    "Chapter2/Chapter2.4 DNS—The Internet’s Directory Service.md",
+    "README.md",
+    "Chapter2/Chapter2.7 Socket Programming ; Creating Network Applications.md",
     "Chapter2/Chapter2.6 Video Streaming and Content Distribution Networks.md",
+    "Chapter2/Chapter2.4 DNS—The Internet’s Directory Service.md",
     "Chapter2/Chapter2.5 Peer-to-Peer File Distribution.md",
     "Chapter2/Chapter2.1 Principles of Network Applications.md",
     "Chapter2/Chapter2 Introduction.md",
     "Chapter2/Chapter2.3 Electronic Mail in the Internet.md",
     "Chapter2/Chapter2.2 The Web and HTTP.md",
     "Excalidraw/Drawing 2024-10-06 17.22.23.excalidraw.md",
-    "README.md",
     "Excalidraw",
     "Chapter1/Chapter1.4 Delay, Loss, and Throughput in Packet-Switched Networks.md",
     "Chapter1/Chapter1.7  History of Computer Networking and the Internet.md",
