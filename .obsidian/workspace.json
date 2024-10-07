@@ -18,8 +18,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "8bf776a821498e48",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Chapter2/Chapter2.6 Video Streaming and Content Distribution Networks.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -85,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Chapter2/Chapter2.5 Peer-to-Peer File Distribution.md",
+                "file": "Chapter2/Chapter2.6 Video Streaming and Content Distribution Networks.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Chapter2/Chapter2.5 Peer-to-Peer File Distribution.md",
+                "file": "Chapter2/Chapter2.6 Video Streaming and Content Distribution Networks.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Chapter2/Chapter2.5 Peer-to-Peer File Distribution.md"
+                "file": "Chapter2/Chapter2.6 Video Streaming and Content Distribution Networks.md"
               }
             }
           },
@@ -157,12 +170,13 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "cd37beccc0269bc1",
+  "active": "8bf776a821498e48",
   "lastOpenFiles": [
+    "Chapter2/Chapter2.4 DNS—The Internet’s Directory Service.md",
+    "Chapter2/Chapter2.6 Video Streaming and Content Distribution Networks.md",
+    "Chapter2/Chapter2.5 Peer-to-Peer File Distribution.md",
     "Chapter2/Chapter2.1 Principles of Network Applications.md",
     "Chapter2/Chapter2 Introduction.md",
-    "Chapter2/Chapter2.5 Peer-to-Peer File Distribution.md",
-    "Chapter2/Chapter2.4 DNS—The Internet’s Directory Service.md",
     "Chapter2/Chapter2.3 Electronic Mail in the Internet.md",
     "Chapter2/Chapter2.2 The Web and HTTP.md",
     "Excalidraw/Drawing 2024-10-06 17.22.23.excalidraw.md",
