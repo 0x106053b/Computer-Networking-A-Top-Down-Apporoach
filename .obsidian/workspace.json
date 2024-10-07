@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Chapter2/Chapter2.5 Peer-to-Peer File Distribution.md",
+                "file": "Chapter2/Chapter2.1 Principles of Network Applications.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Chapter2/Chapter2.5 Peer-to-Peer File Distribution.md",
+                "file": "Chapter2/Chapter2.1 Principles of Network Applications.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Chapter2/Chapter2.5 Peer-to-Peer File Distribution.md",
+                "file": "Chapter2/Chapter2.1 Principles of Network Applications.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Chapter2/Chapter2.5 Peer-to-Peer File Distribution.md"
+                "file": "Chapter2/Chapter2.1 Principles of Network Applications.md"
               }
             }
           },
@@ -159,8 +159,9 @@
   },
   "active": "cd37beccc0269bc1",
   "lastOpenFiles": [
-    "Chapter2/Chapter2.4 DNS—The Internet’s Directory Service.md",
+    "Chapter2/Chapter2 Introduction.md",
     "Chapter2/Chapter2.5 Peer-to-Peer File Distribution.md",
+    "Chapter2/Chapter2.4 DNS—The Internet’s Directory Service.md",
     "Chapter2/Chapter2.3 Electronic Mail in the Internet.md",
     "Chapter2/Chapter2.2 The Web and HTTP.md",
     "Excalidraw/Drawing 2024-10-06 17.22.23.excalidraw.md",
@@ -180,7 +181,6 @@
     "Chapter1/Chapter1.1 What Is the Internet.md",
     "Chapter1/Chapter1 Introduction.md",
     "2024-09-27.md",
-    "Chapter2/Chapter2 Introduction.md",
     "Pasted image 20240925233407.png",
     "Chapter1/Images/Pasted image 20240924130428.png",
     "Chapter1/Images/Pasted image 20240924152003.png",
