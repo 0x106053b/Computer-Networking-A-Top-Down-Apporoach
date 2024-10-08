@@ -147,11 +147,36 @@
 
 >[!example] TCPServer.py
 >`from socket import *` 
+>
 >`serverPort = 12000` 
->`serverSocket = socket(AF_INET,SOCK_STREAM)` 
->`serverSocket.bind((’’,serverPort))` 
->`serverSocket.listen(1)` 
->`print(’The server is ready to receive’)`
->`while True:`
->	connectionSocket, addr = serverSocket.accept()
+>
+>`serverSocket = socket(AF_INET, ,SOCK_STREAM)`
+> 
+>`serverSocket.bind((’’, serverPort))`
+>- UDP 의 경우와 같이 server의 port number를 가지고 server socket을 생성
+>- 이 때 serverSocket은 welcoming socket의 기능을 함
+> 
+`serverSocket.listen(1)`
+>- client가 server에 접촉할 때까지 대기
+>
+>`print(”The server is ready to receive”)` 
+>
+>`while True:` 
+>- socket에 packet이 수신되기를 대기함
+>
+>	`message, clientAddress = serverSocket.recvfrom(2048)`
+>	
+>	`connectionSocket, addr = serverSocket.accept()`
+>	- client가 welcome socket에 대해 TCP connection 생성을 요청
+>	- accept()를 사용하여 client-server 연결을 위한 server TCP socket을 생성
+>	- 이후 handshaking을 거쳐 TCP connection 생성
+>	
+>	`sentence = connectionSocket.recv(1024).decode()`
+>	`capitalizedSentence = sentence.upper()`
+>	`connectionSocket.send(capitalizedSentence.encode())`
+>	`connectionSocket.close()`
+>	- serversocket은 다른 client로부터의 접촉을 대기하며 남아있음
+
+
+
 
