@@ -30,4 +30,43 @@
 
 
 ## 7.2.1 CDMA
+- channel partitioning protocol의 일부
+- 무선 LAN, cellular 기술에서 필수적
+- `In a CDMA protocol, each bit being sent is encoded by multiplying the bit by a signal (the code) that changes at a much faster rate (known as the chipping rate) than the original sequence of data bits.`
+
+![](https://i.imgur.com/nzAqs8Z.png)
+- settings
+	-  $d_i$를 i번째 bit slot의 데이터라고 가정
+	- value가 1인 data bit : $d_i = 1$
+	- value가 0인 data bit : $d_i = -1$
+	- 각각의 bit slot은 M개의 mini slots으로 분할됨
+	- $c_m$를 CDMA code의 m번째 비트라고 가정
+
+- **there is only 1 sender**
+	1. 각 time slot의 비트 $d_i$ 를 CDMA code($c_1, c_2, ..., c_m$) 와 곱한다
+		- $Z_{i, m} = d_i * c_m$
+		- bit slot의 데이터 $d_i$가 M칸의 sequential한 bits로 표현될 수 있음
+	
+	2. receiver은 일련의 $Z_{i, m}$ 데이터를 수신
+	3. 수신한 $Z_{i, m}$에 대해 아래 수식을 계산하여 원본 $d_i$를 복원
+		- $d_i = (1/M)*\sum_{m=1}^{M}(Z_{i, m}\cdot c_m)$
+
+
+- **there is multiple senders**
+	- CDMA는 여러개의 송신자로부터 수신받은 비트가 간섭되는 경우 그 값들이 더해진다고 가정함
+		(예) -1, 1, 1, 1 비트가 도착했다면 receiver는 (-1) + (+1) + (+1) + (+1) = 2를 인식
+	
+	1. 송신자 s는 sender가 1개일 때의 경우와 동일하게 Z를 계산
+		- $Z_{i, m}^{s} = d_i * c_m^s$
+	
+	2. 수신자는 동시에 n개의 sender로부터 i번째 bit slots을 수신함
+		-  $Z_{i,m}^* = \sum_{s=1}^{N}(Z_{i,m}^s)$
+		- i번째 bit slot를 M번째 code로 변환한 데이터들의 합
+	
+	3. 수신자는 sender의 code를 통해서 데이터를 복원
+	![](https://i.imgur.com/rUg8sXc.png)
+
+- **CDMA의 한계**
+	- receiver가 Z를 원 데이터비트로 변환할 수 있도록 CDMA코드를 잘골라야 됨(?)
+	- 모든 sender의 신호 세기가 receiver쪽에서 동등해야 함 (불가능)
 
