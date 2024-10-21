@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "5968b33f239768c2",
+        "id": "83063cd4dcdfa93e",
         "type": "tabs",
         "children": [
           {
-            "id": "99f7566e94e4a080",
+            "id": "8bd39f0ca969a90a",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -160,7 +160,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -174,11 +175,12 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "99f7566e94e4a080",
+  "active": "8bd39f0ca969a90a",
   "lastOpenFiles": [
-    "README.md",
-    "Chapter2/Chapter2.7 Socket Programming ; Creating Network Applications.md",
+    "Chapter1/Chapter1.5 Protocol Layers and Their Service Models.md",
     "MidtermCoverage.md",
+    "Chapter2/Chapter2.7 Socket Programming ; Creating Network Applications.md",
+    "README.md",
     "Chapter7/Chapter7.1 Introduction.md",
     "Chapter7/Chapter7.3 WiFi - 802.11 Wireless LANs.md",
     "Chapter1/Chapter1.2 The Network Edge.md",
@@ -197,7 +199,6 @@
     "Chapter1/Chapter1.4 Delay, Loss, and Throughput in Packet-Switched Networks.md",
     "Chapter1/Chapter1.7  History of Computer Networking and the Internet.md",
     "Chapter1/Chapter1.6 Networks Under Attack.md",
-    "Chapter1/Chapter1.5 Protocol Layers and Their Service Models.md",
     "이름 없는 보드 1.md",
     "이름 없는 보드.md",
     "훌라훌라.md",
