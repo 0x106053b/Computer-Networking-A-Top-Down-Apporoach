@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "7.3 WiFi - 802.11 Wireless LANs.md",
+                "file": "MidtermCoverage.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "7.3 WiFi - 802.11 Wireless LANs"
+              "title": "MidtermCoverage"
             }
           }
         ]
@@ -160,8 +160,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -177,13 +176,16 @@
   },
   "active": "99f7566e94e4a080",
   "lastOpenFiles": [
-    "7.3 WiFi - 802.11 Wireless LANs.md",
-    "Chapter7.2 Wireless Links and Network Characteristics.md",
-    "Chapter7.1 Introduction.md",
+    "README.md",
+    "Chapter2/Chapter2.7 Socket Programming ; Creating Network Applications.md",
+    "MidtermCoverage.md",
+    "Chapter7/Chapter7.1 Introduction.md",
+    "Chapter7/Chapter7.3 WiFi - 802.11 Wireless LANs.md",
+    "Chapter1/Chapter1.2 The Network Edge.md",
+    "Chapter1/Chapter1.1 What Is the Internet.md",
+    "Chapter7/Chapter7.2 Wireless Links and Network Characteristics.md",
     "Chapter2/Chapter2.5 Peer-to-Peer File Distribution.md",
     "Chapter7",
-    "Chapter2/Chapter2.7 Socket Programming ; Creating Network Applications.md",
-    "README.md",
     "Chapter2/Chapter2.6 Video Streaming and Content Distribution Networks.md",
     "Chapter2/Chapter2.4 DNS—The Internet’s Directory Service.md",
     "Chapter2/Chapter2.1 Principles of Network Applications.md",
@@ -201,8 +203,6 @@
     "훌라훌라.md",
     "무제 파일.canvas",
     "Chapter1/Chapter1.3 The Network Core.md",
-    "Chapter1/Chapter1.2 The Network Edge.md",
-    "Chapter1/Chapter1.1 What Is the Internet.md",
     "Chapter1/Chapter1 Introduction.md",
     "2024-09-27.md",
     "Pasted image 20240925233407.png",
@@ -218,7 +218,6 @@
     "wq",
     "Chapter1/Images",
     "Chapter2",
-    "Chapter1",
-    "Welcome.md"
+    "Chapter1"
   ]
 }
